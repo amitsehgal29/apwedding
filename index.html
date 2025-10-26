@@ -61,7 +61,9 @@
             content: '';
             position: absolute;
             background: var(--gold);
-            animation: sparkle 3s ease-in-out infinite;
+            animation: sparkle var(--sparkle-duration, 3s) ease-in-out infinite;
+            animation-delay: var(--sparkle-delay, 0s);
+            will-change: opacity;
         }
 
         .glitter::before {
@@ -83,28 +85,18 @@
         @keyframes sparkle {
             0%, 100% {
                 opacity: 0;
-                box-shadow: 0 0 0px var(--gold);
             }
             50% {
                 opacity: 1;
-                box-shadow: 0 0 8px var(--gold), 0 0 12px rgba(212, 175, 55, 0.6);
             }
         }
 
-        .glitter:nth-child(2n) {
-            animation-delay: 1s;
-        }
-
-        .glitter:nth-child(3n) {
-            animation-delay: 2s;
-        }
-
-        .glitter:nth-child(4n) {
-            animation-delay: 0.5s;
-        }
-
-        .glitter:nth-child(5n) {
-            animation-duration: 4s;
+        /* Simplified animation for mobile performance */
+        @media (max-width: 768px) {
+            .glitter::before,
+            .glitter::after {
+                animation-duration: 4s;
+            }
         }
 
         /* Container */
@@ -514,6 +506,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
         }
 
         .fade-in.visible {
@@ -525,6 +518,7 @@
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
         }
 
         .slide-in-left.visible {
@@ -536,6 +530,7 @@
             opacity: 0;
             transform: translateX(50px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
         }
 
         .slide-in-right.visible {
@@ -547,11 +542,22 @@
             opacity: 0;
             transform: scale(0.9);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
         }
 
         .scale-in.visible {
             opacity: 1;
             transform: scale(1);
+        }
+
+        /* Faster animations on mobile */
+        @media (max-width: 768px) {
+            .fade-in,
+            .slide-in-left,
+            .slide-in-right,
+            .scale-in {
+                transition-duration: 0.5s;
+            }
         }
 
         .stagger-delay-1 {
@@ -729,7 +735,9 @@
 
         // Create subtle glitter sparkles in the background
         function createGlitter() {
-            const numberOfGlitters = 100; // More sparkles for effect
+            // Reduce glitter count on mobile for better performance
+            const isMobile = window.innerWidth <= 768;
+            const numberOfGlitters = isMobile ? 30 : 60; // Reduced from 100
             
             for (let i = 0; i < numberOfGlitters; i++) {
                 const glitter = document.createElement('div');
@@ -749,20 +757,10 @@
                 
                 // Random animation duration for variation (2-5s)
                 const duration = 2 + Math.random() * 3;
-                if (glitter.querySelector) {
-                    glitter.style.setProperty('--duration', duration + 's');
-                }
                 
-                // Apply animation duration to pseudo elements
-                const style = document.createElement('style');
-                style.textContent = `
-                    .glitter:nth-child(${i + 1})::before,
-                    .glitter:nth-child(${i + 1})::after {
-                        animation-duration: ${duration}s;
-                        animation-delay: ${Math.random() * 4}s;
-                    }
-                `;
-                document.head.appendChild(style);
+                // Use CSS custom properties instead of creating style tags
+                glitter.style.setProperty('--sparkle-duration', duration + 's');
+                glitter.style.setProperty('--sparkle-delay', Math.random() * 4 + 's');
                 
                 document.body.appendChild(glitter);
             }
