@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit & Priyanka - Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF9F0;
+            --ivory: #FFFFF0;
+            --gold: #D4AF37;
+            --light-gold: #F5E6D3;
+            --soft-pink: #F0D4D8;
+            --rose: #C97B8E;
+            --charcoal: #3D3D3D;
+            --warm-white: #FDFBF7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--gold);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .decorative-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        /* Glitter Sparkle Animation */
+        .glitter {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            width: 4px;
+            height: 4px;
+        }
+
+        .glitter::before,
+        .glitter::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .glitter::before {
+            width: 100%;
+            height: 1px;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .glitter::after {
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                box-shadow: 0 0 0px var(--gold);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 8px var(--gold), 0 0 12px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        .glitter:nth-child(2n) {
+            animation-delay: 1s;
+        }
+
+        .glitter:nth-child(3n) {
+            animation-delay: 2s;
+        }
+
+        .glitter:nth-child(4n) {
+            animation-delay: 0.5s;
+        }
+
+        .glitter:nth-child(5n) {
+            animation-duration: 4s;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background: var(--cream);
+            text-align: center;
+            flex-direction: column;
+            padding-top: 40px;
+        }
+
+        .welcome-message {
+            font-size: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--rose);
+            margin-bottom: 40px;
+            max-width: 700px;
+            line-height: 1.8;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .couple-names {
+            font-size: 6.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin: 30px 0;
+            line-height: 1.2;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--rose);
+            display: block;
+            margin: 20px 0;
+        }
+
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: var(--gold);
+            margin: 30px auto;
+            opacity: 0.6;
+        }
+
+        /* Ganesh Section */
+        .ganesh-section {
+            background: var(--cream);
+            text-align: center;
+            padding: 60px 20px 20px;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ganesh-mantra {
+            font-size: 2rem;
+            font-family: 'Cinzel', serif;
+            color: var(--rose);
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .ganesh-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            display: block;
+            background: transparent;
+        }
+
+        .ganesh-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+            mix-blend-mode: multiply;
+        }
+
+        /* Formal Invitation Section */
+        .invitation-section {
+            background: var(--ivory);
+            text-align: center;
+        }
+
+        .invitation-content {
+            max-width: 800px;
+            padding: 60px;
+            background: var(--warm-white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--light-gold);
+            position: relative;
+            z-index: 10;
+        }
+
+        .invitation-title {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .invitation-text {
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            line-height: 2;
+            margin: 20px 0;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .wedding-date {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--rose);
+            margin: 30px 0;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+
+        .venue-name {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Events Section */
+        .events-section {
+            background: var(--cream);
+            flex-direction: column;
+            min-height: auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            font-size: 4.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .event-card {
+            background: var(--warm-white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--light-gold);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+        }
+
+        .event-name {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .event-details {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .event-details strong {
+            color: var(--rose);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .dress-code {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light-gold);
+            border-radius: 15px;
+            font-style: italic;
+            color: var(--rose);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            border: 1px solid var(--gold);
+            text-align: center;
+        }
+
+        /* Useful Links Section */
+        .links-section {
+            background: var(--ivory);
+            min-height: auto;
+            padding: 100px 20px;
+        }
+
+        .links-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .link-card {
+            background: var(--warm-white);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.12);
+            border: 2px solid var(--light-gold);
+            position: relative;
+            z-index: 10;
+        }
+
+        .link-card h3 {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .link-card p {
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+            border: none;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .link-card {
+            text-align: center;
+        }
+
+        /* Message Form */
+        .message-form {
+            background: var(--ivory);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--rose);
+            font-weight: 500;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--light-gold);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+            text-align: center;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gold);
+            color: var(--cream);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .couple-names {
+                font-size: 3rem;
+            }
+
+            .ampersand {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .invitation-content {
+                padding: 40px 30px;
+            }
+
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-message {
+                font-size: 1.2rem;
+            }
+
+            .ganesh-mantra {
+                font-size: 1.5rem;
+            }
+
+            .ganesh-icon {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-delay-3 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ganesh Section -->
+    <section class="ganesh-section">
+        <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
+        <div class="ganesh-icon scale-in">
+            <img src="ganpati.png" alt="Shree Ganesh">
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="welcome-message fade-in">
+            With great joy, we invite you to celebrate the union of two hearts, two families, and a lifetime of love
+        </div>
+        <div class="divider scale-in"></div>
+        <div class="couple-names fade-in">
+            Amit
+            <span class="ampersand">& </span>
+            Priyanka
+        </div>
+        <div class="divider scale-in"></div>
+    </section>
+
+    <!-- Formal Invitation Section -->
+    <section class="invitation-section">
+        <div class="invitation-content fade-in">
+            <h2 class="invitation-title">You Are Cordially Invited</h2>
+            <div class="divider"></div>
+            <p class="invitation-text">
+                To witness and bless the sacred union of<br>
+                <strong>Amit & Priyanka</strong><br>
+                as they begin their journey together
+            </p>
+            <div class="wedding-date">
+                29th - 30th November, 2025
+            </div>
+            <p class="venue-name">
+                <strong>Gold Finch Hotel</strong><br>
+                Andheri East, Mumbai
+            </p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <h2 class="section-title fade-in">Celebration Events</h2>
+        <div class="events-container">
+            <!-- Sangeet Card -->
+            <div class="event-card slide-in-left">
+                <h3 class="event-name">Sangeet</h3>
+                <div class="divider"></div>
+                <div class="event-details">
+                    <strong>Date</strong>
+                    29th November, 2025
+                </div>
+                <div class="event-details">
+                    <strong>Time</strong>
+                    7:00 PM Onwards
+                </div>
+                <div class="event-details">
+                    <strong>Venue</strong>
+                    Rooftop, Gold Finch Hotel
+                </div>
+                <div class="dress-code">
+                    <strong>Dress Code:</strong> Bling ✨
+                </div>
+            </div>
+
+            <!-- Varmala & Phera Card -->
+            <div class="event-card slide-in-right">
+                <h3 class="event-name">Varmala & Phera</h3>
+                <div class="divider"></div>
+                <div class="event-details">
+                    <strong>Date</strong>
+                    30th November, 2025
+                </div>
+                <div class="event-details">
+                    <strong>Time</strong>
+                    11:00 PM Onwards
+                </div>
+                <div class="event-details">
+                    <strong>Venue</strong>
+                    Banquet, Gold Finch Hotel
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Useful Links Section -->
+    <section class="links-section">
+        <div class="links-container">
+            <h2 class="section-title fade-in">Helpful Information</h2>
+            
+            <!-- Google Maps Link -->
+            <div class="link-card fade-in stagger-delay-1">
+                <h3>📍 Venue Location</h3>
+                <p>Get directions to Gold Finch Hotel, Andheri East</p>
+                <a href="https://maps.app.goo.gl/KdNgw9WxxtoHyenq5" target="_blank" class="btn">Open in Google Maps</a>
+            </div>
+
+            <!-- Message Form -->
+            <div class="link-card fade-in stagger-delay-2">
+                <h3>💌 Leave Your Wishes</h3>
+                <p>Share your blessings and good wishes for the couple</p>
+                <form class="message-form" action="https://formspree.io/f/scorpio29oct@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Share your heartfelt wishes..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Wishes</button>
+                </form>
+            </div>
+
+            <!-- Photo Upload Link -->
+            <div class="link-card fade-in stagger-delay-3">
+                <h3>📸 Share Your Photos</h3>
+                <p>Capture moments and share them with us! Upload your photos from the celebration</p>
+                <a href="https://photos.app.goo.gl/iGJowXZonFgK34eH6" target="_blank" class="btn">Upload Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Looking forward to celebrating with you!</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Amit & Priyanka • November 2025</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Create subtle glitter sparkles
+            createGlitter();
+        });
+
+        // Create subtle glitter sparkles in the background
+        function createGlitter() {
+            const numberOfGlitters = 100; // More sparkles for effect
+            
+            for (let i = 0; i < numberOfGlitters; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                
+                // Random position across entire page
+                glitter.style.left = Math.random() * 100 + '%';
+                glitter.style.top = Math.random() * 100 + '%';
+                
+                // Varying sizes for sparkle effect (2-6px)
+                const size = 2 + Math.random() * 4;
+                glitter.style.width = size + 'px';
+                glitter.style.height = size + 'px';
+                
+                // Random animation delay for natural sparkle effect
+                glitter.style.animationDelay = Math.random() * 4 + 's';
+                
+                // Random animation duration for variation (2-5s)
+                const duration = 2 + Math.random() * 3;
+                if (glitter.querySelector) {
+                    glitter.style.setProperty('--duration', duration + 's');
+                }
+                
+                // Apply animation duration to pseudo elements
+                const style = document.createElement('style');
+                style.textContent = `
+                    .glitter:nth-child(${i + 1})::before,
+                    .glitter:nth-child(${i + 1})::after {
+                        animation-duration: ${duration}s;
+                        animation-delay: ${Math.random() * 4}s;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                document.body.appendChild(glitter);
+            }
+        }
+    </script>
+</body>
+</html>
