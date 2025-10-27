@@ -590,9 +590,13 @@
             color: var(--gold);
             max-width: 200px;
             line-height: 1.6;
-            opacity: 1;
+            opacity: 0;
             border-left: 3px solid var(--rose);
             pointer-events: none;
+            animation-play-state: paused;
+        }
+
+        .floating-letters-container.active .floating-letter {
             animation-play-state: running;
         }
 
@@ -1280,12 +1284,16 @@
                     if (entry.isIntersecting) {
                         const fireworks = entry.target.querySelector('.fireworks-container');
                         const flowers = entry.target.querySelector('.flower-shower-container');
+                        const floatingLetters = entry.target.querySelector('.floating-letters-container');
                         
                         if (fireworks) {
                             fireworks.classList.add('active');
                         }
                         if (flowers) {
                             flowers.classList.add('active');
+                        }
+                        if (floatingLetters) {
+                            floatingLetters.classList.add('active');
                         }
                     }
                 });
@@ -1294,6 +1302,10 @@
             // Observe event cards for special effects
             const eventCards = document.querySelectorAll('.event-card');
             eventCards.forEach(card => effectsObserver.observe(card));
+            
+            // Observe link cards for floating letters
+            const linkCards = document.querySelectorAll('.link-card');
+            linkCards.forEach(card => effectsObserver.observe(card));
             
             // Music Control
             const bgMusic = document.getElementById('background-music');
