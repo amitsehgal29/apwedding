@@ -958,37 +958,42 @@
             position: absolute;
             left: 50%;
             bottom: 0;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
+            width: 2px;
+            height: 30px;
+            border-radius: 2px;
             animation: particle-explode 2.5s ease-out infinite;
             opacity: 0;
-            transform: translate(-50%, 0);
+            transform-origin: center bottom;
         }
 
         @keyframes particle-explode {
             0%, 50% {
                 opacity: 0;
                 bottom: 0;
+                height: 0px;
                 transform: translate(-50%, 0) scale(0);
             }
             51% {
                 opacity: 1;
                 bottom: var(--burst-height, 60%);
-                transform: translate(-50%, 0) scale(2);
+                height: 30px;
+                transform: translate(-50%, 0) rotate(var(--angle, 0deg)) scale(1);
             }
             55% {
                 opacity: 1;
                 bottom: var(--burst-height, 60%);
-                transform: translate(calc(-50% + var(--tx)), calc(0px + var(--ty))) scale(1);
+                height: 50px;
+                transform: translate(calc(-50% + var(--tx)), calc(0px + var(--ty))) rotate(var(--angle, 0deg)) scale(1);
             }
-            85% {
-                opacity: 0.6;
+            75% {
+                opacity: 0.8;
+                height: 40px;
             }
             100% {
                 opacity: 0;
                 bottom: var(--burst-height, 60%);
-                transform: translate(calc(-50% + var(--tx)), calc(0px + var(--ty))) scale(0);
+                height: 20px;
+                transform: translate(calc(-50% + var(--tx) * 1.2), calc(0px + var(--ty) * 1.2)) rotate(var(--angle, 0deg)) scale(0.5);
             }
         }
 
@@ -1008,34 +1013,34 @@
         .firework-rocket:nth-child(5) .firework-particle { animation-delay: 1.6s; }
         .firework-rocket:nth-child(6) .firework-particle { animation-delay: 2s; }
 
-        /* Particle explosion patterns - many directions for realistic firework */
-        /* Main 8 directions */
-        .firework-particle:nth-child(1) { --tx: 90px; --ty: 0px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(2) { --tx: -90px; --ty: 0px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(3) { --tx: 0px; --ty: -90px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(4) { --tx: 0px; --ty: 90px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(5) { --tx: 65px; --ty: -65px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(6) { --tx: -65px; --ty: -65px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(7) { --tx: 65px; --ty: 65px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(8) { --tx: -65px; --ty: 65px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        /* Particle explosion patterns - many directions for realistic firework with trails */
+        /* Main 8 cardinal and diagonal directions */
+        .firework-particle:nth-child(1) { --tx: 90px; --ty: 0px; --angle: 90deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(2) { --tx: -90px; --ty: 0px; --angle: -90deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(3) { --tx: 0px; --ty: -90px; --angle: 0deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(4) { --tx: 0px; --ty: 90px; --angle: 180deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(5) { --tx: 65px; --ty: -65px; --angle: 45deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(6) { --tx: -65px; --ty: -65px; --angle: -45deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(7) { --tx: 65px; --ty: 65px; --angle: 135deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(8) { --tx: -65px; --ty: 65px; --angle: -135deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
         
-        /* Additional 16 directions for fuller burst */
-        .firework-particle:nth-child(9) { --tx: 80px; --ty: -30px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(10) { --tx: -80px; --ty: -30px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(11) { --tx: 80px; --ty: 30px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(12) { --tx: -80px; --ty: 30px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(13) { --tx: 30px; --ty: -80px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(14) { --tx: -30px; --ty: -80px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(15) { --tx: 30px; --ty: 80px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(16) { --tx: -30px; --ty: 80px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(17) { --tx: 50px; --ty: -75px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(18) { --tx: -50px; --ty: -75px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(19) { --tx: 50px; --ty: 75px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(20) { --tx: -50px; --ty: 75px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(21) { --tx: 75px; --ty: -50px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
-        .firework-particle:nth-child(22) { --tx: -75px; --ty: -50px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-        .firework-particle:nth-child(23) { --tx: 75px; --ty: 50px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
-        .firework-particle:nth-child(24) { --tx: -75px; --ty: 50px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        /* Additional 16 directions for fuller starburst effect */
+        .firework-particle:nth-child(9) { --tx: 85px; --ty: -25px; --angle: 70deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(10) { --tx: -85px; --ty: -25px; --angle: -70deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(11) { --tx: 85px; --ty: 25px; --angle: 110deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(12) { --tx: -85px; --ty: 25px; --angle: -110deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(13) { --tx: 25px; --ty: -85px; --angle: 20deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(14) { --tx: -25px; --ty: -85px; --angle: -20deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(15) { --tx: 25px; --ty: 85px; --angle: 160deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(16) { --tx: -25px; --ty: 85px; --angle: -160deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(17) { --tx: 55px; --ty: -75px; --angle: 35deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(18) { --tx: -55px; --ty: -75px; --angle: -35deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(19) { --tx: 55px; --ty: 75px; --angle: 145deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(20) { --tx: -55px; --ty: 75px; --angle: -145deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(21) { --tx: 75px; --ty: -55px; --angle: 55deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
+        .firework-particle:nth-child(22) { --tx: -75px; --ty: -55px; --angle: -55deg; background: linear-gradient(to bottom, var(--gold), transparent); box-shadow: 0 0 10px var(--gold); }
+        .firework-particle:nth-child(23) { --tx: 75px; --ty: 55px; --angle: 125deg; background: linear-gradient(to bottom, var(--rose), transparent); box-shadow: 0 0 10px var(--rose); }
+        .firework-particle:nth-child(24) { --tx: -75px; --ty: 55px; --angle: -125deg; background: linear-gradient(to bottom, #FFD700, transparent); box-shadow: 0 0 10px #FFD700; }
 
         /* Flower Shower Container for Varmala */
         .flower-shower-container {
