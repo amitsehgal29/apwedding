@@ -853,14 +853,58 @@
             border-radius: 200px 200px 0 0;
             z-index: -1;
         }
+
+        /* Music Control Button */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--rose);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .music-control.playing {
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(212, 175, 55, 0.8);
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Background Music -->
-    <audio id="background-music" loop>
+    <audio id="background-music" loop preload="auto">
         <source src="song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Music Control Button -->
+    <button id="music-toggle" class="music-control" title="Play/Pause Music">
+        🔇
+    </button>
 
     <!-- Ganesh Section -->
     <section class="ganesh-section">
@@ -1026,25 +1070,63 @@
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
             animatedElements.forEach(el => observer.observe(el));
             
-            // Auto-play background music
+            // Music Control
             const bgMusic = document.getElementById('background-music');
-            if (bgMusic) {
-                // Try to play music immediately
-                const playPromise = bgMusic.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Music started playing successfully
-                        console.log('Background music started');
-                    }).catch(error => {
-                        // Auto-play was prevented, play on first user interaction
-                        console.log('Auto-play prevented, waiting for user interaction');
-                        document.body.addEventListener('click', () => {
-                            bgMusic.play().catch(e => console.log('Could not play audio:', e));
-                        }, { once: true });
-                    });
-                }
+            const musicToggle = document.getElementById('music-toggle');
+            let musicPlaying = false;
+            
+            // Function to play music
+            function playMusic() {
+                bgMusic.play().then(() => {
+                    musicPlaying = true;
+                    musicToggle.textContent = '🎵';
+                    musicToggle.classList.add('playing');
+                    musicToggle.title = 'Pause Music';
+                }).catch(error => {
+                    console.log('Could not play audio:', error);
+                });
             }
+            
+            // Function to pause music
+            function pauseMusic() {
+                bgMusic.pause();
+                musicPlaying = false;
+                musicToggle.textContent = '🔇';
+                musicToggle.classList.remove('playing');
+                musicToggle.title = 'Play Music';
+            }
+            
+            // Toggle music on button click
+            musicToggle.addEventListener('click', () => {
+                if (musicPlaying) {
+                    pauseMusic();
+                } else {
+                    playMusic();
+                }
+            });
+            
+            // Try auto-play on page load
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    musicPlaying = true;
+                    musicToggle.textContent = '🎵';
+                    musicToggle.classList.add('playing');
+                    musicToggle.title = 'Pause Music';
+                }).catch(() => {
+                    // Auto-play blocked, user needs to click the button
+                    console.log('Auto-play blocked. Click the music button to play.');
+                });
+            }
+            
+            // Also try to play on first user interaction anywhere
+            let interactionAttempted = false;
+            document.body.addEventListener('click', () => {
+                if (!musicPlaying && !interactionAttempted) {
+                    playMusic();
+                    interactionAttempted = true;
+                }
+            }, { once: true });
             
             // Handle Ganpati image loading animation
             const ganpatiImg = document.querySelector('.ganesh-icon img');
