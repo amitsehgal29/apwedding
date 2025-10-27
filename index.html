@@ -605,17 +605,20 @@
         /* From Left to Right */
         @keyframes floatFromLeft {
             0% {
-                transform: translateX(-120%) rotate(0deg);
+                transform: translateX(-120%) rotate(-5deg);
                 opacity: 0;
             }
             10% {
                 opacity: 0.8;
             }
+            50% {
+                transform: translateX(50vw) rotate(5deg);
+            }
             90% {
                 opacity: 0.8;
             }
             100% {
-                transform: translateX(120vw) rotate(360deg);
+                transform: translateX(120vw) rotate(-5deg);
                 opacity: 0;
             }
         }
@@ -623,17 +626,20 @@
         /* From Right to Left */
         @keyframes floatFromRight {
             0% {
-                transform: translateX(120vw) rotate(0deg);
+                transform: translateX(120vw) rotate(5deg);
                 opacity: 0;
             }
             10% {
                 opacity: 0.8;
             }
+            50% {
+                transform: translateX(50vw) rotate(-5deg);
+            }
             90% {
                 opacity: 0.8;
             }
             100% {
-                transform: translateX(-120%) rotate(-360deg);
+                transform: translateX(-120%) rotate(5deg);
                 opacity: 0;
             }
         }
