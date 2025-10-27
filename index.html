@@ -964,8 +964,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 5px;
-            height: 5px;
+            width: 3px;
+            height: 3px;
             border-radius: 50%;
             animation: particle-explode 2.5s ease-out infinite;
             opacity: 0;
@@ -997,21 +997,36 @@
         .firework-rocket:nth-child(5) { left: 25%; --burst-height: 70%; animation-delay: 1.6s; }
         .firework-rocket:nth-child(6) { left: 85%; --burst-height: 55%; animation-delay: 2s; }
 
-        /* Particle explosion patterns - 8 directions */
+        /* Particle explosion patterns - many directions for realistic firework */
         .firework-particle { animation-delay: inherit; }
         
-        .firework-particle:nth-child(1) { --tx: 80px; --ty: 0px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-        .firework-particle:nth-child(2) { --tx: -80px; --ty: 0px; background: var(--rose); box-shadow: 0 0 10px var(--rose); }
-        .firework-particle:nth-child(3) { --tx: 0px; --ty: -80px; background: #FFD700; box-shadow: 0 0 10px #FFD700; }
-        .firework-particle:nth-child(4) { --tx: 0px; --ty: 80px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-        .firework-particle:nth-child(5) { --tx: 60px; --ty: -60px; background: var(--rose); box-shadow: 0 0 10px var(--rose); }
-        .firework-particle:nth-child(6) { --tx: -60px; --ty: -60px; background: #FFD700; box-shadow: 0 0 10px #FFD700; }
-        .firework-particle:nth-child(7) { --tx: 60px; --ty: 60px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-        .firework-particle:nth-child(8) { --tx: -60px; --ty: 60px; background: var(--rose); box-shadow: 0 0 10px var(--rose); }
-        .firework-particle:nth-child(9) { --tx: 40px; --ty: -70px; background: #FFD700; box-shadow: 0 0 10px #FFD700; }
-        .firework-particle:nth-child(10) { --tx: -40px; --ty: -70px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-        .firework-particle:nth-child(11) { --tx: 70px; --ty: -40px; background: var(--rose); box-shadow: 0 0 10px var(--rose); }
-        .firework-particle:nth-child(12) { --tx: -70px; --ty: -40px; background: #FFD700; box-shadow: 0 0 10px #FFD700; }
+        /* Main 8 directions */
+        .firework-particle:nth-child(1) { --tx: 90px; --ty: 0px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(2) { --tx: -90px; --ty: 0px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(3) { --tx: 0px; --ty: -90px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(4) { --tx: 0px; --ty: 90px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(5) { --tx: 65px; --ty: -65px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(6) { --tx: -65px; --ty: -65px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(7) { --tx: 65px; --ty: 65px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(8) { --tx: -65px; --ty: 65px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        
+        /* Additional 16 directions for fuller burst */
+        .firework-particle:nth-child(9) { --tx: 80px; --ty: -30px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(10) { --tx: -80px; --ty: -30px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(11) { --tx: 80px; --ty: 30px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(12) { --tx: -80px; --ty: 30px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(13) { --tx: 30px; --ty: -80px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(14) { --tx: -30px; --ty: -80px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(15) { --tx: 30px; --ty: 80px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(16) { --tx: -30px; --ty: 80px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(17) { --tx: 50px; --ty: -75px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(18) { --tx: -50px; --ty: -75px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(19) { --tx: 50px; --ty: 75px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(20) { --tx: -50px; --ty: 75px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(21) { --tx: 75px; --ty: -50px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
+        .firework-particle:nth-child(22) { --tx: -75px; --ty: -50px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+        .firework-particle:nth-child(23) { --tx: 75px; --ty: 50px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
+        .firework-particle:nth-child(24) { --tx: -75px; --ty: 50px; background: #FFD700; box-shadow: 0 0 8px #FFD700; }
 
         /* Flower Shower Container for Varmala */
         .flower-shower-container {
@@ -1236,18 +1251,10 @@
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
-                    </div>
-                    <div class="firework-rocket">
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
-                        <div class="firework-particle"></div>
-                        <div class="firework-particle"></div>
-                        <div class="firework-particle"></div>
-                        <div class="firework-particle"></div>
-                    </div>
-                    <div class="firework-rocket">
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
@@ -1266,8 +1273,14 @@
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
-                    </div>
-                    <div class="firework-rocket">
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
@@ -1278,6 +1291,100 @@
                         <div class="firework-particle"></div>
                     </div>
                     <div class="firework-rocket">
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                    </div>
+                    <div class="firework-rocket">
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                    </div>
+                    <div class="firework-rocket">
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                    </div>
+                    <div class="firework-rocket">
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
+                        <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
                         <div class="firework-particle"></div>
