@@ -396,6 +396,8 @@
             border: none;
             margin: 0 auto;
             letter-spacing: 0.05em;
+            position: relative;
+            z-index: 10;
         }
 
         .btn:hover {
@@ -421,6 +423,8 @@
         .form-group {
             margin-bottom: 20px;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .form-group label {
@@ -467,6 +471,8 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         #form-messages.success {
@@ -490,9 +496,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow: visible;
             pointer-events: none;
-            z-index: 0;
+            z-index: 5;
         }
 
         .floating-letter {
@@ -500,7 +506,7 @@
             background: linear-gradient(135deg, var(--warm-white) 0%, var(--ivory) 100%);
             padding: 15px 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             border: 1px solid var(--light-gold);
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.95rem;
@@ -508,82 +514,131 @@
             max-width: 200px;
             line-height: 1.6;
             opacity: 0;
-            animation: floatLetter 20s ease-in-out infinite;
             border-left: 3px solid var(--rose);
+            pointer-events: none;
         }
 
-        .floating-letter::before {
-            content: '✉️';
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            font-size: 1.2rem;
-        }
 
-        @keyframes floatLetter {
+
+        /* From Bottom */
+        @keyframes floatFromBottom {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translate(-50%, 120vh) rotate(0deg);
                 opacity: 0;
             }
             10% {
-                opacity: 0.7;
+                opacity: 0.8;
             }
             90% {
-                opacity: 0.7;
+                opacity: 0.8;
             }
             100% {
-                transform: translateY(-100%) rotate(360deg);
+                transform: translate(-50%, -120%) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* Different animation delays and positions for each letter */
+        /* From Top */
+        @keyframes floatFromTop {
+            0% {
+                transform: translate(-50%, -120%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, 120vh) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        /* From Left */
+        @keyframes floatFromLeft {
+            0% {
+                transform: translate(-120%, -50%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(120vw, -50%) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* From Right */
+        @keyframes floatFromRight {
+            0% {
+                transform: translate(120vw, -50%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-120%, -50%) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Assign different animations to each letter */
         .floating-letter:nth-child(1) {
-            left: 10%;
+            left: 15%;
+            animation: floatFromBottom 25s ease-in-out infinite;
             animation-delay: 0s;
-            animation-duration: 25s;
         }
 
         .floating-letter:nth-child(2) {
-            left: 25%;
+            top: 30%;
+            animation: floatFromLeft 22s ease-in-out infinite;
             animation-delay: 4s;
-            animation-duration: 22s;
         }
 
         .floating-letter:nth-child(3) {
-            left: 45%;
+            left: 50%;
+            animation: floatFromTop 28s ease-in-out infinite;
             animation-delay: 8s;
-            animation-duration: 28s;
         }
 
         .floating-letter:nth-child(4) {
-            left: 65%;
+            top: 60%;
+            animation: floatFromRight 24s ease-in-out infinite;
             animation-delay: 12s;
-            animation-duration: 24s;
         }
 
         .floating-letter:nth-child(5) {
-            left: 80%;
+            left: 75%;
+            animation: floatFromBottom 26s ease-in-out infinite;
             animation-delay: 16s;
-            animation-duration: 26s;
         }
 
         .floating-letter:nth-child(6) {
-            left: 15%;
+            top: 45%;
+            animation: floatFromLeft 23s ease-in-out infinite;
             animation-delay: 20s;
-            animation-duration: 23s;
         }
 
         .floating-letter:nth-child(7) {
-            left: 55%;
+            left: 35%;
+            animation: floatFromTop 27s ease-in-out infinite;
             animation-delay: 24s;
-            animation-duration: 27s;
         }
 
         .floating-letter:nth-child(8) {
-            left: 35%;
+            top: 75%;
+            animation: floatFromRight 25s ease-in-out infinite;
             animation-delay: 28s;
-            animation-duration: 25s;
         }
 
         /* Hide floating letters on mobile for better performance */
