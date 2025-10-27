@@ -146,7 +146,7 @@
 
         /* Welcome Section */
         .welcome-section {
-            background: linear-gradient(135deg, var(--ivory) 0%, var(--warm-white) 50%, var(--ivory) 100%);
+            background: linear-gradient(135deg, #f4e6e8 0%, #f8d7e0 50%, #f4e6e8 100%);
             min-height: auto;
             padding: 30px 20px;
             text-align: center;
@@ -861,23 +861,23 @@
             height: 60px;
             background: transparent;
             border-radius: 50%;
-            border: 2px solid var(--gold);
+            border: 2px solid var(--rose);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            color: var(--gold);
+            color: var(--rose);
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 15px rgba(200, 100, 130, 0.2);
             transition: all 0.3s ease;
             animation: pulse 2s ease-in-out infinite;
         }
 
         .music-control:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 6px 20px rgba(200, 100, 130, 0.4);
+            background: rgba(200, 100, 130, 0.1);
         }
 
         .music-control.playing {
@@ -892,7 +892,7 @@
             left: 50%;
             width: 70%;
             height: 2px;
-            background: var(--gold);
+            background: var(--rose);
             transform: translate(-50%, -50%) rotate(60deg) scaleX(0);
             transform-origin: center;
             transition: transform 0.3s ease;
@@ -914,12 +914,12 @@
 
         @keyframes pulse {
             0%, 100% {
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-                border-color: var(--gold);
+                box-shadow: 0 4px 15px rgba(200, 100, 130, 0.2);
+                border-color: var(--rose);
             }
             50% {
-                box-shadow: 0 4px 25px rgba(212, 175, 55, 0.5);
-                border-color: var(--rose);
+                box-shadow: 0 4px 25px rgba(200, 100, 130, 0.5);
+                border-color: var(--gold);
             }
         }
     </style>
