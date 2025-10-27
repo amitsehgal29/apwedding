@@ -402,25 +402,46 @@
         .btn {
             display: inline-block;
             padding: 15px 40px;
-            background: var(--gold);
-            color: white;
+            background: transparent;
+            color: var(--gold);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
             font-size: 1.1rem;
             font-family: 'Montserrat', sans-serif;
-            border: none;
+            border: 2px solid var(--gold);
             margin: 0 auto;
             letter-spacing: 0.05em;
             position: relative;
             z-index: 5;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            color: white;
+            border-color: var(--gold);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
         }
 
         .link-card {
@@ -620,43 +641,43 @@
         .floating-letter:nth-child(2) {
             top: 30%;
             animation: floatFromLeft 44s ease-in-out infinite;
-            animation-delay: 8s;
+            animation-delay: 2s;
         }
 
         .floating-letter:nth-child(3) {
             left: 50%;
             animation: floatFromTop 56s ease-in-out infinite;
-            animation-delay: 16s;
+            animation-delay: 4s;
         }
 
         .floating-letter:nth-child(4) {
             top: 60%;
             animation: floatFromRight 48s ease-in-out infinite;
-            animation-delay: 24s;
+            animation-delay: 6s;
         }
 
         .floating-letter:nth-child(5) {
             left: 75%;
             animation: floatFromBottom 52s ease-in-out infinite;
-            animation-delay: 32s;
+            animation-delay: 8s;
         }
 
         .floating-letter:nth-child(6) {
             top: 45%;
             animation: floatFromLeft 46s ease-in-out infinite;
-            animation-delay: 40s;
+            animation-delay: 10s;
         }
 
         .floating-letter:nth-child(7) {
             left: 35%;
             animation: floatFromTop 54s ease-in-out infinite;
-            animation-delay: 48s;
+            animation-delay: 12s;
         }
 
         .floating-letter:nth-child(8) {
             top: 75%;
             animation: floatFromRight 50s ease-in-out infinite;
-            animation-delay: 56s;
+            animation-delay: 14s;
         }
 
         /* Footer */
