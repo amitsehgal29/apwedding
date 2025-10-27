@@ -881,7 +881,6 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
             animation: pulse 2s ease-in-out infinite;
-            position: relative;
         }
 
         .music-control:hover {
@@ -894,31 +893,31 @@
             animation: none;
         }
 
-        /* Strike-through line for muted state */
+        /* Strike-through line for muted state - 60 degree angle */
         .music-control::after {
             content: '';
             position: absolute;
             top: 50%;
-            left: 10%;
-            right: 10%;
+            left: 50%;
+            width: 70%;
             height: 2px;
             background: var(--gold);
-            transform: translateY(-50%) scaleX(0);
-            transform-origin: left;
+            transform: translate(-50%, -50%) rotate(60deg) scaleX(0);
+            transform-origin: center;
             transition: transform 0.3s ease;
         }
 
         .music-control.muted::after {
-            transform: translateY(-50%) scaleX(1);
+            transform: translate(-50%, -50%) rotate(60deg) scaleX(1);
             animation: strikeThrough 0.3s ease forwards;
         }
 
         @keyframes strikeThrough {
             from {
-                transform: translateY(-50%) scaleX(0);
+                transform: translate(-50%, -50%) rotate(60deg) scaleX(0);
             }
             to {
-                transform: translateY(-50%) scaleX(1);
+                transform: translate(-50%, -50%) rotate(60deg) scaleX(1);
             }
         }
 
