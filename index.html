@@ -150,7 +150,8 @@
             text-align: center;
             flex-direction: column;
             padding-top: 60px;
-            padding-bottom: 80px;
+            padding-bottom: 100px;
+            margin-bottom: 80px;
             min-height: auto;
         }
 
@@ -196,6 +197,7 @@
             background: var(--cream);
             text-align: center;
             padding: 60px 20px 40px;
+            margin-bottom: 80px;
             min-height: auto;
             display: flex;
             flex-direction: column;
@@ -249,6 +251,7 @@
         .invitation-section {
             background: var(--ivory);
             text-align: center;
+            margin-bottom: 80px;
         }
 
         .invitation-content {
@@ -305,6 +308,7 @@
             flex-direction: column;
             min-height: auto;
             padding: 120px 20px;
+            margin-bottom: 80px;
         }
 
         .section-title {
@@ -587,46 +591,10 @@
 
 
 
-        /* From Bottom */
-        @keyframes floatFromBottom {
-            0% {
-                transform: translate(-50%, 120vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translate(-50%, -120%) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* From Top */
-        @keyframes floatFromTop {
-            0% {
-                transform: translate(-50%, -120%) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translate(-50%, 120vh) rotate(-360deg);
-                opacity: 0;
-            }
-        }
-
-        /* From Left */
+        /* From Left to Right */
         @keyframes floatFromLeft {
             0% {
-                transform: translate(-120%, -50%) rotate(0deg);
+                transform: translateX(-120%) rotate(0deg);
                 opacity: 0;
             }
             10% {
@@ -636,15 +604,15 @@
                 opacity: 0.8;
             }
             100% {
-                transform: translate(120vw, -50%) rotate(360deg);
+                transform: translateX(120vw) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* From Right */
+        /* From Right to Left */
         @keyframes floatFromRight {
             0% {
-                transform: translate(120vw, -50%) rotate(0deg);
+                transform: translateX(120vw) rotate(0deg);
                 opacity: 0;
             }
             10% {
@@ -654,27 +622,27 @@
                 opacity: 0.8;
             }
             100% {
-                transform: translate(-120%, -50%) rotate(-360deg);
+                transform: translateX(-120%) rotate(-360deg);
                 opacity: 0;
             }
         }
 
-        /* Assign different animations to each letter */
+        /* Assign different animations to each letter - only horizontal movement */
         .floating-letter:nth-child(1) {
-            left: 15%;
-            animation: floatFromBottom 50s ease-in-out infinite;
+            top: 15%;
+            animation: floatFromLeft 50s ease-in-out infinite;
             animation-delay: 0s;
         }
 
         .floating-letter:nth-child(2) {
             top: 30%;
-            animation: floatFromLeft 44s ease-in-out infinite;
+            animation: floatFromRight 44s ease-in-out infinite;
             animation-delay: 0.5s;
         }
 
         .floating-letter:nth-child(3) {
-            left: 50%;
-            animation: floatFromTop 56s ease-in-out infinite;
+            top: 45%;
+            animation: floatFromLeft 56s ease-in-out infinite;
             animation-delay: 1s;
         }
 
@@ -685,25 +653,25 @@
         }
 
         .floating-letter:nth-child(5) {
-            left: 75%;
-            animation: floatFromBottom 52s ease-in-out infinite;
+            top: 75%;
+            animation: floatFromLeft 52s ease-in-out infinite;
             animation-delay: 2s;
         }
 
         .floating-letter:nth-child(6) {
-            top: 45%;
-            animation: floatFromLeft 46s ease-in-out infinite;
+            top: 25%;
+            animation: floatFromRight 46s ease-in-out infinite;
             animation-delay: 2.5s;
         }
 
         .floating-letter:nth-child(7) {
-            left: 35%;
-            animation: floatFromTop 54s ease-in-out infinite;
+            top: 50%;
+            animation: floatFromLeft 54s ease-in-out infinite;
             animation-delay: 3s;
         }
 
         .floating-letter:nth-child(8) {
-            top: 75%;
+            top: 70%;
             animation: floatFromRight 50s ease-in-out infinite;
             animation-delay: 3.5s;
         }
