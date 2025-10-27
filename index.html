@@ -983,6 +983,11 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Show loading message immediately
+                formMessages.innerHTML = '✨ Sending your beautiful wishes...';
+                formMessages.className = 'success';
+                formMessages.style.display = 'block';
+                
                 const formData = new FormData(form);
                 
                 fetch(form.action, {
@@ -997,11 +1002,6 @@
                         formMessages.innerHTML = '✨ Thank you for your beautiful wishes! Your message means the world to us. 💕';
                         formMessages.className = 'success';
                         form.reset();
-                        
-                        // Hide success message after 5 seconds
-                        setTimeout(() => {
-                            formMessages.style.display = 'none';
-                        }, 5000);
                     } else {
                         return response.json().then(data => {
                             throw new Error(data.error || 'Form submission failed');
@@ -1011,11 +1011,6 @@
                 .catch(error => {
                     formMessages.innerHTML = 'Oops! There was a problem sending your message. Please try again.';
                     formMessages.className = 'error';
-                    
-                    // Hide error message after 5 seconds
-                    setTimeout(() => {
-                        formMessages.style.display = 'none';
-                    }, 5000);
                 });
             });
         });
