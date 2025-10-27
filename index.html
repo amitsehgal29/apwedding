@@ -227,13 +227,16 @@
             background: transparent;
             mix-blend-mode: multiply;
             opacity: 0;
-            animation: fadeInImage 0.8s ease-in forwards;
+        }
+
+        .ganesh-icon img.loaded {
+            animation: fadeInImage 1.2s ease-out forwards;
         }
 
         @keyframes fadeInImage {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+                transform: scale(0.9);
             }
             to {
                 opacity: 1;
@@ -857,7 +860,7 @@
     <section class="ganesh-section">
         <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
         <div class="ganesh-icon scale-in">
-            <img src="ganpati.png" alt="Shree Ganesh">
+            <img src="ganpati.png" alt="Shree Ganesh" loading="eager">
         </div>
     </section>
 
@@ -1016,6 +1019,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
             animatedElements.forEach(el => observer.observe(el));
+            
+            // Handle Ganpati image loading animation
+            const ganpatiImg = document.querySelector('.ganesh-icon img');
+            if (ganpatiImg) {
+                if (ganpatiImg.complete) {
+                    // Image already loaded
+                    ganpatiImg.classList.add('loaded');
+                } else {
+                    // Wait for image to load
+                    ganpatiImg.addEventListener('load', function() {
+                        ganpatiImg.classList.add('loaded');
+                    });
+                    // Fallback: add class after 2 seconds even if load event doesn't fire
+                    setTimeout(() => {
+                        if (!ganpatiImg.classList.contains('loaded')) {
+                            ganpatiImg.classList.add('loaded');
+                        }
+                    }, 2000);
+                }
+            }
             
             // Create subtle glitter sparkles
             createGlitter();
