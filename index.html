@@ -605,20 +605,17 @@
         /* From Left to Right */
         @keyframes floatFromLeft {
             0% {
-                transform: translateX(-120%) rotate(-20deg);
+                transform: translateX(-100%) rotate(-20deg);
                 opacity: 0;
             }
-            10% {
+            5% {
                 opacity: 0.8;
             }
-            50% {
-                transform: translateX(50vw) rotate(20deg);
-            }
-            90% {
+            95% {
                 opacity: 0.8;
             }
             100% {
-                transform: translateX(120vw) rotate(-20deg);
+                transform: translateX(calc(100vw + 100%)) rotate(20deg);
                 opacity: 0;
             }
         }
@@ -626,20 +623,17 @@
         /* From Right to Left */
         @keyframes floatFromRight {
             0% {
-                transform: translateX(120vw) rotate(20deg);
+                transform: translateX(100vw) rotate(20deg);
                 opacity: 0;
             }
-            10% {
+            5% {
                 opacity: 0.8;
             }
-            50% {
-                transform: translateX(50vw) rotate(-20deg);
-            }
-            90% {
+            95% {
                 opacity: 0.8;
             }
             100% {
-                transform: translateX(-120%) rotate(20deg);
+                transform: translateX(calc(-100% - 100px)) rotate(-20deg);
                 opacity: 0;
             }
         }
