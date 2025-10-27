@@ -864,39 +864,61 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 15px 25px;
+            padding: 15px;
+            width: 60px;
+            height: 60px;
             background: transparent;
-            border-radius: 50px;
+            border-radius: 50%;
             border: 2px solid var(--gold);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
             color: var(--gold);
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
             animation: pulse 2s ease-in-out infinite;
-            white-space: nowrap;
-            font-weight: 500;
-            letter-spacing: 0.05em;
+            position: relative;
         }
 
         .music-control:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
             background: rgba(212, 175, 55, 0.1);
         }
 
         .music-control.playing {
             animation: none;
-            padding: 15px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 24px;
+        }
+
+        /* Strike-through line for muted state */
+        .music-control::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--gold);
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .music-control.muted::after {
+            transform: translateY(-50%) scaleX(1);
+            animation: strikeThrough 0.3s ease forwards;
+        }
+
+        @keyframes strikeThrough {
+            from {
+                transform: translateY(-50%) scaleX(0);
+            }
+            to {
+                transform: translateY(-50%) scaleX(1);
+            }
         }
 
         @keyframes pulse {
@@ -1096,15 +1118,15 @@
             function playMusic() {
                 bgMusic.play().then(() => {
                     musicPlaying = true;
-                    musicToggle.textContent = '♫';
                     musicToggle.classList.add('playing');
+                    musicToggle.classList.remove('muted');
                     musicToggle.title = 'Pause Music';
                 }).catch(error => {
                     console.log('Could not play audio:', error);
                     // If auto-play fails, update state
                     musicPlaying = false;
-                    musicToggle.textContent = 'Listen to this card';
                     musicToggle.classList.remove('playing');
+                    musicToggle.classList.add('muted');
                     musicToggle.title = 'Play Music';
                 });
             }
@@ -1113,8 +1135,8 @@
             function pauseMusic() {
                 bgMusic.pause();
                 musicPlaying = false;
-                musicToggle.textContent = 'Listen to this card';
                 musicToggle.classList.remove('playing');
+                musicToggle.classList.add('muted');
                 musicToggle.title = 'Play Music';
             }
             
