@@ -516,7 +516,7 @@
             height: 100%;
             overflow: visible;
             pointer-events: none;
-            z-index: 5;
+            z-index: 1;
         }
 
         .floating-letter {
@@ -613,50 +613,50 @@
         /* Assign different animations to each letter */
         .floating-letter:nth-child(1) {
             left: 15%;
-            animation: floatFromBottom 25s ease-in-out infinite;
+            animation: floatFromBottom 50s ease-in-out infinite;
             animation-delay: 0s;
         }
 
         .floating-letter:nth-child(2) {
             top: 30%;
-            animation: floatFromLeft 22s ease-in-out infinite;
-            animation-delay: 4s;
+            animation: floatFromLeft 44s ease-in-out infinite;
+            animation-delay: 8s;
         }
 
         .floating-letter:nth-child(3) {
             left: 50%;
-            animation: floatFromTop 28s ease-in-out infinite;
-            animation-delay: 8s;
+            animation: floatFromTop 56s ease-in-out infinite;
+            animation-delay: 16s;
         }
 
         .floating-letter:nth-child(4) {
             top: 60%;
-            animation: floatFromRight 24s ease-in-out infinite;
-            animation-delay: 12s;
+            animation: floatFromRight 48s ease-in-out infinite;
+            animation-delay: 24s;
         }
 
         .floating-letter:nth-child(5) {
             left: 75%;
-            animation: floatFromBottom 26s ease-in-out infinite;
-            animation-delay: 16s;
+            animation: floatFromBottom 52s ease-in-out infinite;
+            animation-delay: 32s;
         }
 
         .floating-letter:nth-child(6) {
             top: 45%;
-            animation: floatFromLeft 23s ease-in-out infinite;
-            animation-delay: 20s;
+            animation: floatFromLeft 46s ease-in-out infinite;
+            animation-delay: 40s;
         }
 
         .floating-letter:nth-child(7) {
             left: 35%;
-            animation: floatFromTop 27s ease-in-out infinite;
-            animation-delay: 24s;
+            animation: floatFromTop 54s ease-in-out infinite;
+            animation-delay: 48s;
         }
 
         .floating-letter:nth-child(8) {
             top: 75%;
-            animation: floatFromRight 25s ease-in-out infinite;
-            animation-delay: 28s;
+            animation: floatFromRight 50s ease-in-out infinite;
+            animation-delay: 56s;
         }
 
         /* Hide floating letters on mobile for better performance */
@@ -936,10 +936,6 @@
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message *</label>
