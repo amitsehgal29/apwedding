@@ -987,6 +987,14 @@
             bottom: 0;
         }
 
+        /* Inherit animation delay from parent rocket */
+        .firework-rocket:nth-child(1) .firework-particle { animation-delay: 0s; }
+        .firework-rocket:nth-child(2) .firework-particle { animation-delay: 1s; }
+        .firework-rocket:nth-child(3) .firework-particle { animation-delay: 0.5s; }
+        .firework-rocket:nth-child(4) .firework-particle { animation-delay: 1.5s; }
+        .firework-rocket:nth-child(5) .firework-particle { animation-delay: 2s; }
+        .firework-rocket:nth-child(6) .firework-particle { animation-delay: 2.5s; }
+
         /* Firework Launch Positions and Particles */
         .firework-rocket:nth-child(1) { left: 20%; --burst-height: 60%; animation-delay: 0s; }
         .firework-rocket:nth-child(2) { left: 40%; --burst-height: 50%; animation-delay: 1s; }
