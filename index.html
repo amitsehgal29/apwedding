@@ -997,9 +997,15 @@
         .firework-rocket:nth-child(5) { left: 25%; --burst-height: 70%; animation-delay: 1.6s; }
         .firework-rocket:nth-child(6) { left: 85%; --burst-height: 55%; animation-delay: 2s; }
 
+        /* Sync particle delays with their parent rocket */
+        .firework-rocket:nth-child(1) .firework-particle { animation-delay: 0s; }
+        .firework-rocket:nth-child(2) .firework-particle { animation-delay: 0.8s; }
+        .firework-rocket:nth-child(3) .firework-particle { animation-delay: 0.4s; }
+        .firework-rocket:nth-child(4) .firework-particle { animation-delay: 1.2s; }
+        .firework-rocket:nth-child(5) .firework-particle { animation-delay: 1.6s; }
+        .firework-rocket:nth-child(6) .firework-particle { animation-delay: 2s; }
+
         /* Particle explosion patterns - many directions for realistic firework */
-        .firework-particle { animation-delay: inherit; }
-        
         /* Main 8 directions */
         .firework-particle:nth-child(1) { --tx: 90px; --ty: 0px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
         .firework-particle:nth-child(2) { --tx: -90px; --ty: 0px; background: var(--rose); box-shadow: 0 0 8px var(--rose); }
