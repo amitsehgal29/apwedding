@@ -367,6 +367,8 @@
             font-family: 'Playfair Display', serif;
             text-align: center;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
         .link-card p {
@@ -375,6 +377,8 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -410,6 +414,8 @@
             border-radius: 15px;
             box-shadow: none;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .form-group {
@@ -475,6 +481,116 @@
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+        }
+
+        /* Floating Letter Cards */
+        .floating-letters-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-letter {
+            position: absolute;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--ivory) 100%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--light-gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--gold);
+            max-width: 200px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: floatLetter 20s ease-in-out infinite;
+            border-left: 3px solid var(--rose);
+        }
+
+        .floating-letter::before {
+            content: '✉️';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes floatLetter {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100%) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Different animation delays and positions for each letter */
+        .floating-letter:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+
+        .floating-letter:nth-child(2) {
+            left: 25%;
+            animation-delay: 4s;
+            animation-duration: 22s;
+        }
+
+        .floating-letter:nth-child(3) {
+            left: 45%;
+            animation-delay: 8s;
+            animation-duration: 28s;
+        }
+
+        .floating-letter:nth-child(4) {
+            left: 65%;
+            animation-delay: 12s;
+            animation-duration: 24s;
+        }
+
+        .floating-letter:nth-child(5) {
+            left: 80%;
+            animation-delay: 16s;
+            animation-duration: 26s;
+        }
+
+        .floating-letter:nth-child(6) {
+            left: 15%;
+            animation-delay: 20s;
+            animation-duration: 23s;
+        }
+
+        .floating-letter:nth-child(7) {
+            left: 55%;
+            animation-delay: 24s;
+            animation-duration: 27s;
+        }
+
+        .floating-letter:nth-child(8) {
+            left: 35%;
+            animation-delay: 28s;
+            animation-duration: 25s;
+        }
+
+        /* Hide floating letters on mobile for better performance */
+        @media (max-width: 768px) {
+            .floating-letter {
+                display: none;
+            }
         }
 
         /* Footer */
@@ -727,7 +843,19 @@
             </div>
 
             <!-- Message Form -->
-            <div class="link-card fade-in arch-shaped">
+            <div class="link-card fade-in arch-shaped" style="position: relative; overflow: hidden;">
+                <!-- Floating Letters Background -->
+                <div class="floating-letters-container">
+                    <div class="floating-letter">Congratulations to the beautiful couple! 💑</div>
+                    <div class="floating-letter">Wishing you a lifetime of love and happiness! ❤️</div>
+                    <div class="floating-letter">May your love story be as magical as a fairy tale ✨</div>
+                    <div class="floating-letter">Wishing for happily ever after, Amit and Priyanka! 🌟</div>
+                    <div class="floating-letter">Cheers to love, laughter, and your happily ever after! 🥂</div>
+                    <div class="floating-letter">Best wishes on this wonderful journey! 🎊</div>
+                    <div class="floating-letter">May your marriage be filled with endless joy! 💕</div>
+                    <div class="floating-letter">So happy for you both! Congratulations! 🎉</div>
+                </div>
+                
                 <h3>💌 Leave Your Wishes</h3>
                 <p>Share your blessings and good wishes for the couple</p>
                 <div id="form-messages"></div>
