@@ -926,8 +926,8 @@
     </audio>
 
     <!-- Music Control Button -->
-    <button id="music-toggle" class="music-control" title="Play/Pause Music">
-        🔇
+    <button id="music-toggle" class="music-control playing" title="Pause Music">
+        ♫
     </button>
 
     <!-- Ganesh Section -->
@@ -1097,17 +1097,22 @@
             // Music Control
             const bgMusic = document.getElementById('background-music');
             const musicToggle = document.getElementById('music-toggle');
-            let musicPlaying = false;
+            let musicPlaying = true; // Start as playing
             
             // Function to play music
             function playMusic() {
                 bgMusic.play().then(() => {
                     musicPlaying = true;
-                    musicToggle.textContent = '🎵';
+                    musicToggle.textContent = '♫';
                     musicToggle.classList.add('playing');
                     musicToggle.title = 'Pause Music';
                 }).catch(error => {
                     console.log('Could not play audio:', error);
+                    // If auto-play fails, update state
+                    musicPlaying = false;
+                    musicToggle.textContent = '♪';
+                    musicToggle.classList.remove('playing');
+                    musicToggle.title = 'Play Music';
                 });
             }
             
@@ -1115,7 +1120,7 @@
             function pauseMusic() {
                 bgMusic.pause();
                 musicPlaying = false;
-                musicToggle.textContent = '🔇';
+                musicToggle.textContent = '♪';
                 musicToggle.classList.remove('playing');
                 musicToggle.title = 'Play Music';
             }
@@ -1130,20 +1135,9 @@
             });
             
             // Try auto-play on page load
-            const playPromise = bgMusic.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    musicPlaying = true;
-                    musicToggle.textContent = '🎵';
-                    musicToggle.classList.add('playing');
-                    musicToggle.title = 'Pause Music';
-                }).catch(() => {
-                    // Auto-play blocked, user needs to click the button
-                    console.log('Auto-play blocked. Click the music button to play.');
-                });
-            }
+            playMusic(); // Attempt to play immediately
             
-            // Also try to play on first user interaction anywhere
+            // Also try to play on first user interaction anywhere if auto-play was blocked
             let interactionAttempted = false;
             document.body.addEventListener('click', () => {
                 if (!musicPlaying && !interactionAttempted) {
