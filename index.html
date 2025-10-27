@@ -386,7 +386,7 @@
             text-align: center;
             font-weight: 400;
             position: relative;
-            z-index: 1;
+            z-index: 5;
         }
 
         .link-card p {
@@ -396,7 +396,7 @@
             font-size: 1.2rem;
             text-align: center;
             position: relative;
-            z-index: 1;
+            z-index: 5;
         }
 
         .btn {
@@ -415,7 +415,7 @@
             margin: 0 auto;
             letter-spacing: 0.05em;
             position: relative;
-            z-index: 10;
+            z-index: 5;
         }
 
         .btn:hover {
@@ -429,20 +429,20 @@
 
         /* Message Form */
         .message-form {
-            background: var(--ivory);
+            background: transparent;
             padding: 40px;
             border-radius: 15px;
             box-shadow: none;
             text-align: center;
             position: relative;
-            z-index: 1;
+            z-index: 5;
         }
 
         .form-group {
             margin-bottom: 20px;
             text-align: center;
             position: relative;
-            z-index: 10;
+            z-index: 5;
         }
 
         .form-group label {
@@ -490,7 +490,7 @@
             font-size: 1rem;
             text-align: center;
             position: relative;
-            z-index: 10;
+            z-index: 5;
         }
 
         #form-messages.success {
@@ -657,13 +657,6 @@
             top: 75%;
             animation: floatFromRight 50s ease-in-out infinite;
             animation-delay: 56s;
-        }
-
-        /* Hide floating letters on mobile for better performance */
-        @media (max-width: 768px) {
-            .floating-letter {
-                display: none;
-            }
         }
 
         /* Footer */
