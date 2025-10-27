@@ -856,6 +856,12 @@
     </style>
 </head>
 <body>
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- Ganesh Section -->
     <section class="ganesh-section">
         <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
@@ -1019,6 +1025,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
             animatedElements.forEach(el => observer.observe(el));
+            
+            // Auto-play background music
+            const bgMusic = document.getElementById('background-music');
+            if (bgMusic) {
+                // Try to play music immediately
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Music started playing successfully
+                        console.log('Background music started');
+                    }).catch(error => {
+                        // Auto-play was prevented, play on first user interaction
+                        console.log('Auto-play prevented, waiting for user interaction');
+                        document.body.addEventListener('click', () => {
+                            bgMusic.play().catch(e => console.log('Could not play audio:', e));
+                        }, { once: true });
+                    });
+                }
+            }
             
             // Handle Ganpati image loading animation
             const ganpatiImg = document.querySelector('.ganesh-icon img');
