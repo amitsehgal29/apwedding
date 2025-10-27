@@ -898,6 +898,108 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
+        /* Fireworks Container for Sangeet */
+        .fireworks-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .fireworks-container.active {
+            opacity: 1;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework-burst 2s ease-out infinite;
+        }
+
+        @keyframes firework-burst {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .firework:nth-child(1) { --tx: 60px; --ty: -80px; background: var(--gold); animation-delay: 0s; }
+        .firework:nth-child(2) { --tx: -60px; --ty: -80px; background: var(--rose); animation-delay: 0.1s; }
+        .firework:nth-child(3) { --tx: 80px; --ty: -40px; background: #FFD700; animation-delay: 0.2s; }
+        .firework:nth-child(4) { --tx: -80px; --ty: -40px; background: var(--gold); animation-delay: 0.3s; }
+        .firework:nth-child(5) { --tx: 40px; --ty: -100px; background: var(--rose); animation-delay: 0.4s; }
+        .firework:nth-child(6) { --tx: -40px; --ty: -100px; background: #FFD700; animation-delay: 0.5s; }
+        .firework:nth-child(7) { --tx: 90px; --ty: -60px; background: var(--gold); animation-delay: 0.6s; }
+        .firework:nth-child(8) { --tx: -90px; --ty: -60px; background: var(--rose); animation-delay: 0.7s; }
+
+        .firework-spark {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            transform: translateX(-50%);
+        }
+
+        /* Flower Shower Container for Varmala */
+        .flower-shower-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .flower-shower-container.active {
+            opacity: 1;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            animation: fall linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                opacity: 0.6;
+                transform: translateX(var(--drift)) rotate(360deg);
+            }
+        }
+
+        .flower:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; --drift: 20px; }
+        .flower:nth-child(2) { left: 25%; animation-duration: 10s; animation-delay: 1s; --drift: -30px; }
+        .flower:nth-child(3) { left: 40%; animation-duration: 9s; animation-delay: 2s; --drift: 25px; }
+        .flower:nth-child(4) { left: 55%; animation-duration: 11s; animation-delay: 0.5s; --drift: -20px; }
+        .flower:nth-child(5) { left: 70%; animation-duration: 8.5s; animation-delay: 1.5s; --drift: 30px; }
+        .flower:nth-child(6) { left: 85%; animation-duration: 10.5s; animation-delay: 0.8s; --drift: -25px; }
+        .flower:nth-child(7) { left: 15%; animation-duration: 9.5s; animation-delay: 2.5s; --drift: 15px; }
+        .flower:nth-child(8) { left: 50%; animation-duration: 11.5s; animation-delay: 1.8s; --drift: -15px; }
+        .flower:nth-child(9) { left: 75%; animation-duration: 9.8s; animation-delay: 0.3s; --drift: 28px; }
+        .flower:nth-child(10) { left: 30%; animation-duration: 10.8s; animation-delay: 2.2s; --drift: -22px; }
+
         .music-control:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(200, 100, 130, 0.4);
@@ -1008,6 +1110,40 @@
         <div class="events-container">
             <!-- Sangeet Card -->
             <div class="event-card slide-in-left arch-shaped">
+                <!-- Fireworks Animation -->
+                <div class="fireworks-container">
+                    <div class="firework-spark">
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                    </div>
+                    <div class="firework-spark" style="left: 30%; top: 30%;">
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                    </div>
+                    <div class="firework-spark" style="left: 70%; top: 25%;">
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                        <div class="firework"></div>
+                    </div>
+                </div>
+                
                 <h3 class="event-name">Sangeet</h3>
                 <div class="divider"></div>
                 <div class="event-details">
@@ -1029,6 +1165,20 @@
 
             <!-- Varmala & Phera Card -->
             <div class="event-card slide-in-right arch-shaped">
+                <!-- Flower Shower Animation -->
+                <div class="flower-shower-container">
+                    <div class="flower">🌸</div>
+                    <div class="flower">🌺</div>
+                    <div class="flower">🌼</div>
+                    <div class="flower">🌸</div>
+                    <div class="flower">🌺</div>
+                    <div class="flower">🌼</div>
+                    <div class="flower">🌸</div>
+                    <div class="flower">🌺</div>
+                    <div class="flower">🌼</div>
+                    <div class="flower">🌸</div>
+                </div>
+                
                 <h3 class="event-name">Varmala & Phera</h3>
                 <div class="divider"></div>
                 <div class="event-details">
@@ -1123,6 +1273,27 @@
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
             animatedElements.forEach(el => observer.observe(el));
+            
+            // Observer for fireworks and flower shower
+            const effectsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fireworks = entry.target.querySelector('.fireworks-container');
+                        const flowers = entry.target.querySelector('.flower-shower-container');
+                        
+                        if (fireworks) {
+                            fireworks.classList.add('active');
+                        }
+                        if (flowers) {
+                            flowers.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe event cards for special effects
+            const eventCards = document.querySelectorAll('.event-card');
+            eventCards.forEach(card => effectsObserver.observe(card));
             
             // Music Control
             const bgMusic = document.getElementById('background-music');
