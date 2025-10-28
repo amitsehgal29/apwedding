@@ -408,12 +408,14 @@
             position: relative;
             z-index: 10;
             overflow: visible;
+            min-height: 400px;
         }
 
         .link-card h3 {
             font-size: 2rem;
             color: var(--gold);
             margin-bottom: 30px;
+            margin-top: 150px;
             font-family: 'Playfair Display', serif;
             text-align: center;
             font-weight: 400;
@@ -429,6 +431,16 @@
             text-align: center;
             position: relative;
             z-index: 5;
+        }
+        
+        /* Only apply top margin to photo upload section */
+        .link-card:has(.polaroid-container) h3 {
+            margin-top: 150px;
+        }
+        
+        /* Other sections keep normal margin */
+        .link-card:not(:has(.polaroid-container)) h3 {
+            margin-top: 0;
         }
 
         .btn {
