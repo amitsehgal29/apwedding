@@ -1189,6 +1189,153 @@
                 border-color: var(--gold);
             }
         }
+
+        /* Polaroid Photos on Rope */
+        .polaroid-container {
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rope {
+            position: absolute;
+            top: 40px;
+            left: -10%;
+            width: 120%;
+            height: 3px;
+            background: linear-gradient(to bottom, #8B7355 0%, #6B5744 50%, #8B7355 100%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transform: rotate(-1deg);
+        }
+
+        .rope::before,
+        .rope::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(139, 115, 85, 0.5);
+        }
+
+        .rope::before {
+            top: 0;
+        }
+
+        .rope::after {
+            bottom: 0;
+        }
+
+        .polaroid {
+            position: absolute;
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform-origin: top center;
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Wooden clip */
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 35px;
+            height: 30px;
+            background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
+            clip-path: polygon(
+                20% 0%, 80% 0%,
+                100% 15%, 100% 40%,
+                85% 45%, 85% 100%,
+                15% 100%, 15% 45%,
+                0% 40%, 0% 15%
+            );
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        /* Clip metal spring */
+        .polaroid::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: linear-gradient(to bottom, #C0C0C0, #808080);
+            border-radius: 2px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+            z-index: 11;
+        }
+
+        .polaroid:nth-child(2) {
+            left: 8%;
+            top: 25px;
+            transform: rotate(-8deg);
+        }
+
+        .polaroid:nth-child(3) {
+            left: 30%;
+            top: 35px;
+            transform: rotate(5deg);
+        }
+
+        .polaroid:nth-child(4) {
+            left: 52%;
+            top: 28px;
+            transform: rotate(-3deg);
+        }
+
+        .polaroid:nth-child(5) {
+            left: 74%;
+            top: 32px;
+            transform: rotate(7deg);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .polaroid img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .polaroid {
+                padding: 8px 8px 30px 8px;
+            }
+
+            .polaroid:nth-child(2) {
+                left: 2%;
+            }
+
+            .polaroid:nth-child(3) {
+                left: 27%;
+            }
+
+            .polaroid:nth-child(4) {
+                left: 52%;
+            }
+
+            .polaroid:nth-child(5) {
+                left: 77%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1514,6 +1661,23 @@
 
             <!-- Photo Upload Link -->
             <div class="link-card fade-in arch-shaped">
+                <!-- Polaroid Photos on Rope -->
+                <div class="polaroid-container">
+                    <div class="rope"></div>
+                    <div class="polaroid">
+                        <img src="couple1.png" alt="Amit & Priyanka">
+                    </div>
+                    <div class="polaroid">
+                        <img src="couple2.png" alt="Amit & Priyanka">
+                    </div>
+                    <div class="polaroid">
+                        <img src="couple3.png" alt="Amit & Priyanka">
+                    </div>
+                    <div class="polaroid">
+                        <img src="couple4.png" alt="Amit & Priyanka">
+                    </div>
+                </div>
+                
                 <h3>📸 Share Your Photos</h3>
                 <p>Capture moments and share them with us! Upload your photos from the celebration</p>
                 <a href="https://photos.app.goo.gl/iGJowXZonFgK34eH6" target="_blank" class="btn">Upload Photos</a>
