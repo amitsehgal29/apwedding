@@ -1193,67 +1193,48 @@
         /* Polaroid Photos on Rope */
         .polaroid-container {
             position: absolute;
-            top: -60px;
+            top: -80px;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 280px;
             pointer-events: none;
             z-index: 1;
+            opacity: 0.6;
         }
 
         .rope {
             position: absolute;
-            top: 40px;
-            left: -10%;
-            width: 120%;
-            height: 3px;
-            background: linear-gradient(to bottom, #8B7355 0%, #6B5744 50%, #8B7355 100%);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transform: rotate(-1deg);
-        }
-
-        .rope::before,
-        .rope::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background: rgba(139, 115, 85, 0.5);
-        }
-
-        .rope::before {
-            top: 0;
-        }
-
-        .rope::after {
-            bottom: 0;
+            top: 60px;
+            left: -5%;
+            width: 110%;
+            height: 2px;
+            background: #333;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
         }
 
         .polaroid {
             position: absolute;
-            background: white;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transform-origin: top center;
-            transition: transform 0.3s ease;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
         .polaroid img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
             display: block;
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         /* Wooden clip */
         .polaroid::before {
             content: '';
             position: absolute;
-            top: -15px;
+            top: -18px;
             left: 50%;
             transform: translateX(-50%);
-            width: 35px;
-            height: 30px;
+            width: 30px;
+            height: 25px;
             background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
             clip-path: polygon(
                 20% 0%, 80% 0%,
@@ -1262,7 +1243,7 @@
                 15% 100%, 15% 45%,
                 0% 40%, 0% 15%
             );
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             z-index: 10;
         }
 
@@ -1270,54 +1251,84 @@
         .polaroid::after {
             content: '';
             position: absolute;
-            top: -8px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 8px;
+            width: 16px;
+            height: 6px;
             background: linear-gradient(to bottom, #C0C0C0, #808080);
             border-radius: 2px;
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
             z-index: 11;
         }
 
+        /* Sway animations */
+        @keyframes sway1 {
+            0% { transform: rotate(-4deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        @keyframes sway2 {
+            0% { transform: rotate(3deg); }
+            100% { transform: rotate(-3deg); }
+        }
+
+        @keyframes sway3 {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(4deg); }
+        }
+
+        @keyframes sway4 {
+            0% { transform: rotate(5deg); }
+            100% { transform: rotate(-1deg); }
+        }
+
         .polaroid:nth-child(2) {
-            left: 8%;
-            top: 25px;
-            transform: rotate(-8deg);
+            left: 5%;
+            top: 45px;
+            animation: sway1 3.5s ease-in-out infinite alternate;
+        }
+
+        .polaroid:nth-child(2) img {
+            width: 180px;
         }
 
         .polaroid:nth-child(3) {
-            left: 30%;
-            top: 35px;
-            transform: rotate(5deg);
+            left: 28%;
+            top: 55px;
+            animation: sway2 4s ease-in-out infinite alternate;
+        }
+
+        .polaroid:nth-child(3) img {
+            width: 180px;
         }
 
         .polaroid:nth-child(4) {
-            left: 52%;
-            top: 28px;
-            transform: rotate(-3deg);
+            left: 51%;
+            top: 48px;
+            animation: sway3 3.8s ease-in-out infinite alternate;
+        }
+
+        .polaroid:nth-child(4) img {
+            width: 180px;
         }
 
         .polaroid:nth-child(5) {
             left: 74%;
-            top: 32px;
-            transform: rotate(7deg);
+            top: 52px;
+            animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
-        .polaroid:hover {
-            transform: rotate(0deg) translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .polaroid:nth-child(5) img {
+            width: 180px;
         }
 
         @media (max-width: 768px) {
-            .polaroid img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .polaroid {
-                padding: 8px 8px 30px 8px;
+            .polaroid:nth-child(2) img,
+            .polaroid:nth-child(3) img,
+            .polaroid:nth-child(4) img,
+            .polaroid:nth-child(5) img {
+                width: 120px;
             }
 
             .polaroid:nth-child(2) {
@@ -1334,6 +1345,10 @@
 
             .polaroid:nth-child(5) {
                 left: 77%;
+            }
+
+            .polaroid-container {
+                height: 220px;
             }
         }
     </style>
