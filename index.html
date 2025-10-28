@@ -1196,7 +1196,7 @@
             top: -80px;
             left: 0;
             width: 100%;
-            height: 280px;
+            height: 240px;
             pointer-events: none;
             z-index: 1;
             opacity: 0.6;
@@ -1204,12 +1204,14 @@
 
         .rope {
             position: absolute;
-            top: 60px;
+            top: 50px;
             left: -5%;
             width: 110%;
             height: 2px;
             background: #333;
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+            border-radius: 50% / 100%;
+            transform: scaleY(3);
         }
 
         .polaroid {
@@ -1222,43 +1224,43 @@
 
         .polaroid img {
             display: block;
-            border: 2px solid var(--gold);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1.5px solid var(--gold);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
 
-        /* Wooden clip */
+        /* Simple small clip */
         .polaroid::before {
-            content: '';
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 25px;
-            background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
-            clip-path: polygon(
-                20% 0%, 80% 0%,
-                100% 15%, 100% 40%,
-                85% 45%, 85% 100%,
-                15% 100%, 15% 45%,
-                0% 40%, 0% 15%
-            );
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-
-        /* Clip metal spring */
-        .polaroid::after {
             content: '';
             position: absolute;
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 16px;
-            height: 6px;
+            width: 20px;
+            height: 16px;
+            background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
+            clip-path: polygon(
+                25% 0%, 75% 0%,
+                100% 20%, 100% 50%,
+                80% 55%, 80% 100%,
+                20% 100%, 20% 55%,
+                0% 50%, 0% 20%
+            );
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        /* Small clip spring */
+        .polaroid::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 4px;
             background: linear-gradient(to bottom, #C0C0C0, #808080);
-            border-radius: 2px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 1px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
             z-index: 11;
         }
 
@@ -1284,43 +1286,43 @@
         }
 
         .polaroid:nth-child(2) {
-            left: 5%;
-            top: 45px;
+            left: 8%;
+            top: 35px;
             animation: sway1 3.5s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(2) img {
-            width: 180px;
+            width: 130px;
         }
 
         .polaroid:nth-child(3) {
-            left: 28%;
-            top: 55px;
+            left: 32%;
+            top: 50px;
             animation: sway2 4s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(3) img {
-            width: 180px;
+            width: 130px;
         }
 
         .polaroid:nth-child(4) {
-            left: 51%;
-            top: 48px;
+            left: 56%;
+            top: 52px;
             animation: sway3 3.8s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(4) img {
-            width: 180px;
+            width: 130px;
         }
 
         .polaroid:nth-child(5) {
-            left: 74%;
-            top: 52px;
+            left: 80%;
+            top: 38px;
             animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(5) img {
-            width: 180px;
+            width: 130px;
         }
 
         @media (max-width: 768px) {
@@ -1328,27 +1330,27 @@
             .polaroid:nth-child(3) img,
             .polaroid:nth-child(4) img,
             .polaroid:nth-child(5) img {
-                width: 120px;
+                width: 90px;
             }
 
             .polaroid:nth-child(2) {
-                left: 2%;
+                left: 5%;
             }
 
             .polaroid:nth-child(3) {
-                left: 27%;
+                left: 30%;
             }
 
             .polaroid:nth-child(4) {
-                left: 52%;
+                left: 55%;
             }
 
             .polaroid:nth-child(5) {
-                left: 77%;
+                left: 80%;
             }
 
             .polaroid-container {
-                height: 220px;
+                height: 200px;
             }
         }
     </style>
