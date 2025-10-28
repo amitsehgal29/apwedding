@@ -1204,14 +1204,25 @@
 
         .rope {
             position: absolute;
-            top: 50px;
-            left: -5%;
-            width: 110%;
-            height: 2px;
-            background: #333;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-            border-radius: 50% / 100%;
-            transform: scaleY(3);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            pointer-events: none;
+        }
+
+        .rope::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: 3px solid var(--rose);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 2px 4px rgba(200, 100, 130, 0.3);
         }
 
         .polaroid {
@@ -1287,7 +1298,7 @@
 
         .polaroid:nth-child(2) {
             left: 8%;
-            top: 35px;
+            top: 20px;
             animation: sway1 3.5s ease-in-out infinite alternate;
         }
 
@@ -1297,7 +1308,7 @@
 
         .polaroid:nth-child(3) {
             left: 32%;
-            top: 50px;
+            top: 65px;
             animation: sway2 4s ease-in-out infinite alternate;
         }
 
@@ -1307,7 +1318,7 @@
 
         .polaroid:nth-child(4) {
             left: 56%;
-            top: 52px;
+            top: 68px;
             animation: sway3 3.8s ease-in-out infinite alternate;
         }
 
@@ -1317,7 +1328,7 @@
 
         .polaroid:nth-child(5) {
             left: 80%;
-            top: 38px;
+            top: 22px;
             animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
