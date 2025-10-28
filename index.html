@@ -1193,10 +1193,10 @@
         /* Polaroid Photos on Rope */
         .polaroid-container {
             position: absolute;
-            top: -100px;
+            top: -120px;
             left: 0;
             width: 100%;
-            height: 260px;
+            height: 280px;
             pointer-events: none;
             z-index: 1;
             opacity: 0.6;
@@ -1204,25 +1204,24 @@
 
         .rope {
             position: absolute;
-            top: 10px;
-            left: 5%;
-            width: 90%;
-            height: 100px;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 120px;
             pointer-events: none;
         }
 
         .rope::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border: 3px solid var(--rose);
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-radius: 0 0 50% 50%;
-            box-shadow: 0 2px 4px rgba(200, 100, 130, 0.3);
+            top: 0;
+            left: 5%;
+            width: 90%;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120' preserveAspectRatio='none'%3E%3Cpath d='M 0,10 Q 50,120 100,10' fill='none' stroke='%23C97B8E' stroke-width='0.8'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            filter: drop-shadow(0 2px 3px rgba(200, 100, 130, 0.3));
         }
 
         .polaroid {
@@ -1297,8 +1296,8 @@
         }
 
         .polaroid:nth-child(2) {
-            left: 8%;
-            top: 25px;
+            left: 10%;
+            top: 30px;
             animation: sway1 3.5s ease-in-out infinite alternate;
         }
 
@@ -1307,8 +1306,8 @@
         }
 
         .polaroid:nth-child(3) {
-            left: 32%;
-            top: 70px;
+            left: 33%;
+            top: 90px;
             animation: sway2 4s ease-in-out infinite alternate;
         }
 
@@ -1317,8 +1316,8 @@
         }
 
         .polaroid:nth-child(4) {
-            left: 56%;
-            top: 73px;
+            left: 57%;
+            top: 92px;
             animation: sway3 3.8s ease-in-out infinite alternate;
         }
 
@@ -1328,7 +1327,7 @@
 
         .polaroid:nth-child(5) {
             left: 80%;
-            top: 27px;
+            top: 32px;
             animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
@@ -1345,23 +1344,31 @@
             }
 
             .polaroid:nth-child(2) {
-                left: 5%;
+                left: 8%;
+                top: 25px;
             }
 
             .polaroid:nth-child(3) {
-                left: 30%;
+                left: 32%;
+                top: 75px;
             }
 
             .polaroid:nth-child(4) {
-                left: 55%;
+                left: 56%;
+                top: 77px;
             }
 
             .polaroid:nth-child(5) {
-                left: 80%;
+                left: 82%;
+                top: 27px;
             }
 
             .polaroid-container {
-                height: 200px;
+                height: 240px;
+            }
+
+            .rope::before {
+                height: 100px;
             }
         }
     </style>
