@@ -1397,9 +1397,9 @@
         /* Animated Taxi */
         .taxi-container {
             position: absolute;
-            bottom: 20px;
-            left: -100px;
-            width: 80px;
+            bottom: 30px;
+            left: -150px;
+            width: 120px;
             height: auto;
             pointer-events: none;
             z-index: 1;
@@ -1407,7 +1407,7 @@
         }
         
         .taxi-container.active {
-            animation: driveTaxi 8s ease-in-out forwards;
+            animation: driveTaxi 10s ease-in-out forwards;
         }
         
         .taxi {
@@ -1415,29 +1415,100 @@
             height: auto;
             display: block;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            background: transparent;
         }
         
         @keyframes driveTaxi {
             0% {
-                left: -100px;
+                left: -150px;
+                bottom: 30px;
                 opacity: 0;
             }
-            10% {
+            5% {
                 opacity: 1;
             }
-            90% {
+            15% {
+                bottom: 35px;
+            }
+            25% {
+                bottom: 28px;
+            }
+            35% {
+                bottom: 36px;
+            }
+            45% {
+                bottom: 29px;
+            }
+            55% {
+                bottom: 34px;
+            }
+            65% {
+                bottom: 30px;
+            }
+            75% {
+                bottom: 33px;
+            }
+            85% {
+                bottom: 31px;
+            }
+            92% {
                 opacity: 1;
             }
             100% {
-                left: calc(100% + 20px);
+                left: calc(100% - 50px);
+                bottom: 30px;
                 opacity: 0;
             }
         }
         
         @media (max-width: 768px) {
             .taxi-container {
-                width: 60px;
-                bottom: 15px;
+                width: 80px;
+                bottom: 20px;
+                left: -100px;
+            }
+            
+            @keyframes driveTaxi {
+                0% {
+                    left: -100px;
+                    bottom: 20px;
+                    opacity: 0;
+                }
+                5% {
+                    opacity: 1;
+                }
+                15% {
+                    bottom: 24px;
+                }
+                25% {
+                    bottom: 18px;
+                }
+                35% {
+                    bottom: 25px;
+                }
+                45% {
+                    bottom: 19px;
+                }
+                55% {
+                    bottom: 23px;
+                }
+                65% {
+                    bottom: 20px;
+                }
+                75% {
+                    bottom: 22px;
+                }
+                85% {
+                    bottom: 21px;
+                }
+                92% {
+                    opacity: 1;
+                }
+                100% {
+                    left: calc(100% - 40px);
+                    bottom: 20px;
+                    opacity: 0;
+                }
             }
         }
     </style>
