@@ -1787,53 +1787,37 @@
             const linkCards = document.querySelectorAll('.link-card');
             linkCards.forEach(card => effectsObserver.observe(card));
 
-            const welcomeSection = document.querySelector('.welcome-section');
             const shehnaiLeft = document.querySelector('.shehnai.left');
             const shehnaiRight = document.querySelector('.shehnai.right');
 
             // Function to update the shehnai animation based on scroll position
             function updateShehnaiAnimation() {
-                if (!welcomeSection || !shehnaiLeft || !shehnaiRight) {
-                    return;
-                }
+                const scrollY = window.scrollY;
+                const animationStart = 0;
+                const animationEnd = 500; // Animate over the first 500px of scroll
 
-                const rect = welcomeSection.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-
-                // Define the scroll range for the animation
-                // Animation starts when the top of the welcomeSection is at 90% of the viewport height
-                // Animation ends when the top of the welcomeSection is at 40% of the viewport height
-                const animationStartScrollPoint = viewportHeight * 0.9;
-                const animationEndScrollPoint = viewportHeight * 0.4;
-
-                // Calculate raw progress based on rect.top
-                // When rect.top is animationStartScrollPoint, progress should be 0
-                // When rect.top is animationEndScrollPoint, progress should be 1
-                const rawProgress = (animationStartScrollPoint - rect.top) / (animationStartScrollPoint - animationEndScrollPoint);
-
-                // Clamp progress between 0 and 1
-                const clampedProgress = Math.max(0, Math.min(1, rawProgress));
+                // Calculate progress from 0 to 1
+                let progress = (scrollY - animationStart) / (animationEnd - animationStart);
+                progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
 
                 // Calculate transform values
-                const translateXLeft = -100 + (clampedProgress * 80); // From -100% to -20%
-                const rotateLeft = -30 + (clampedProgress * 30); // From -30deg to 0deg
+                const translateXLeft = -50 + (progress * 50); // From -50% to 0%
+                const rotateLeft = -45 + (progress * 45); // From -45deg to 0deg
 
-                const translateXRight = 100 - (clampedProgress * 80); // From 100% to 20%
-                const rotateRight = 30 - (clampedProgress * 30); // From 30deg to 0deg
+                const translateXRight = 50 - (progress * 50); // From 50% to 0%
+                const rotateRight = 45 - (progress * 45); // From 45deg to 0deg
 
-                // Apply transforms
                 shehnaiLeft.style.transform = `translateX(${translateXLeft}%) translateY(-50%) rotate(${rotateLeft}deg)`;
                 shehnaiRight.style.transform = `translateX(${translateXRight}%) translateY(-50%) rotate(${rotateRight}deg) scaleX(-1)`;
             }
-
-            // Initial call to set the correct state on page load (shehnais off-screen)
-            // This ensures they are hidden if the welcome-section is not yet in the animation range
-            updateShehnaiAnimation();
 
             // Listen for scroll events and update animation using requestAnimationFrame for smoothness
             window.addEventListener('scroll', () => {
                 requestAnimationFrame(updateShehnaiAnimation);
             });
+
+            // Call it once on load to set the initial position correctly
+            updateShehnaiAnimation();
             
             // Music Control
             
