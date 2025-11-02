@@ -1260,7 +1260,6 @@
                 height: 80px;
             }
         }
-        
         /* Route Animation for Venue Location */
         .route-container {
             position: absolute;
@@ -1281,10 +1280,10 @@
         /* Airport icon - top left */
         .airport-icon {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 80px;
-            height: 80px;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Increased size */
+            height: 100px; /* Increased size */
             z-index: 1;
         }
         
@@ -1297,10 +1296,10 @@
         /* Mandap icon - bottom LEFT */
         .mandap-icon {
             position: absolute;
-            bottom: 15px;
-            left: 15px;
-            width: 90px;
-            height: 90px;
+            bottom: 20px;
+            left: 20px;
+            width: 110px; /* Increased size */
+            height: 110px; /* Increased size */
             z-index: 1;
         }
         
@@ -1328,10 +1327,11 @@
         /* Animated taxi - bigger size */
         .taxi-animated {
             position: absolute;
-            width: 65px;
-            height: 65px;
+            width: 85px; /* Increased size */
+            height: 85px; /* Increased size */
             z-index: 2;
             opacity: 0;
+            offset-rotate: auto; /* Taxi rotates along the path */
         }
         
         .taxi-animated img {
@@ -1341,165 +1341,49 @@
         }
         
         .route-container.active .taxi-animated {
-            animation: taxiRoute 12s linear infinite;
+            animation: taxiRoute 10s linear infinite;
+            offset-path: path('M 70,70 C 400,70 400,500 70,500'); /* Smooth reversed C-path */
         }
         
         @keyframes taxiRoute {
             0% {
-                top: 55px;
-                left: 55px;
-                transform: rotate(0deg);
+                motion-offset: 0%;
                 opacity: 0;
             }
             2% {
                 opacity: 1;
             }
-            /* Move right along top */
-            20% {
-                top: 50px;
-                left: calc(100% - 100px);
-                transform: rotate(85deg);
-            }
-            /* Curve down right side - smooth C curve */
-            30% {
-                top: calc(25% - 30px);
-                left: calc(100% - 85px);
-                transform: rotate(130deg);
-            }
-            40% {
-                top: calc(40% - 30px);
-                left: calc(100% - 75px);
-                transform: rotate(160deg);
-            }
-            50% {
-                top: calc(55% - 30px);
-                left: calc(100% - 70px);
-                transform: rotate(180deg);
-            }
-            60% {
-                top: calc(70% - 30px);
-                left: calc(100% - 75px);
-                transform: rotate(200deg);
-            }
-            /* Curve left along bottom */
-            70% {
-                top: calc(100% - 80px);
-                left: calc(100% - 90px);
-                transform: rotate(240deg);
-            }
-            80% {
-                top: calc(100% - 70px);
-                left: calc(60%);
-                transform: rotate(270deg);
-            }
-            90% {
-                top: calc(100% - 65px);
-                left: 120px;
-                transform: rotate(275deg);
-            }
-            /* Arrive at mandap */
-            96% {
-                top: calc(100% - 60px);
-                left: 80px;
-                transform: rotate(280deg);
+            98% {
                 opacity: 1;
             }
-            98% {
-                opacity: 0.5;
-            }
             100% {
-                top: calc(100% - 55px);
-                left: 70px;
-                transform: rotate(285deg);
+                motion-offset: 100%;
                 opacity: 0;
             }
         }
         
         @media (max-width: 768px) {
             .airport-icon {
-                top: 12px;
-                left: 12px;
-                width: 55px;
-                height: 55px;
+                top: 15px;
+                left: 15px;
+                width: 70px; /* Adjusted for mobile */
+                height: 70px; /* Adjusted for mobile */
             }
             
             .mandap-icon {
-                bottom: 12px;
-                left: 12px;
-                width: 65px;
-                height: 65px;
+                bottom: 15px;
+                left: 15px;
+                width: 80px; /* Adjusted for mobile */
+                height: 80px; /* Adjusted for mobile */
             }
             
             .taxi-animated {
-                width: 48px;
-                height: 48px;
+                width: 60px; /* Adjusted for mobile */
+                height: 60px; /* Adjusted for mobile */
             }
             
-            @keyframes taxiRoute {
-                0% {
-                    top: 40px;
-                    left: 40px;
-                    transform: rotate(0deg);
-                    opacity: 0;
-                }
-                2% {
-                    opacity: 1;
-                }
-                20% {
-                    top: 36px;
-                    left: calc(100% - 75px);
-                    transform: rotate(85deg);
-                }
-                30% {
-                    top: calc(25% - 20px);
-                    left: calc(100% - 62px);
-                    transform: rotate(130deg);
-                }
-                40% {
-                    top: calc(40% - 20px);
-                    left: calc(100% - 55px);
-                    transform: rotate(160deg);
-                }
-                50% {
-                    top: calc(55% - 20px);
-                    left: calc(100% - 52px);
-                    transform: rotate(180deg);
-                }
-                60% {
-                    top: calc(70% - 20px);
-                    left: calc(100% - 55px);
-                    transform: rotate(200deg);
-                }
-                70% {
-                    top: calc(100% - 60px);
-                    left: calc(100% - 68px);
-                    transform: rotate(240deg);
-                }
-                80% {
-                    top: calc(100% - 52px);
-                    left: calc(60%);
-                    transform: rotate(270deg);
-                }
-                90% {
-                    top: calc(100% - 48px);
-                    left: 85px;
-                    transform: rotate(275deg);
-                }
-                96% {
-                    top: calc(100% - 45px);
-                    left: 60px;
-                    transform: rotate(280deg);
-                    opacity: 1;
-                }
-                98% {
-                    opacity: 0.5;
-                }
-                100% {
-                    top: calc(100% - 42px);
-                    left: 52px;
-                    transform: rotate(285deg);
-                    opacity: 0;
-                }
+            .route-container.active .taxi-animated {
+                offset-path: path('M 50,50 C 250,50 250,350 50,350'); /* Adjusted path for mobile */
             }
         }
     </style>
@@ -1646,11 +1530,11 @@
                     <div class="route-path">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
                             <!-- Smooth C-shaped curved path from top-left to bottom-left -->
-                            <path d="M 10,10 L 82,10 Q 90,10 90,18 Q 90,30 90,50 Q 90,70 90,82 Q 90,90 82,90 L 15,90" 
+                            <path d="M 70,70 C 400,70 400,500 70,500" 
                                   fill="none" 
                                   stroke="#D4AF37" 
-                                  stroke-width="0.6" 
-                                  stroke-dasharray="4,4" 
+                                  stroke-width="2" 
+                                  stroke-dasharray="6,6" 
                                   opacity="0.75"/>
                         </svg>
                     </div>
