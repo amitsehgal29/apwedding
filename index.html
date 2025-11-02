@@ -1347,7 +1347,7 @@
         
         @keyframes taxiRoute {
             0% {
-                motion-offset: 0%;
+                offset-distance: 0%;
                 opacity: 0;
             }
             2% {
@@ -1357,7 +1357,7 @@
                 opacity: 1;
             }
             100% {
-                motion-offset: 100%;
+                offset-distance: 100%;
                 opacity: 0;
             }
         }
@@ -1529,13 +1529,6 @@
                     <!-- Dotted C-shaped path -->
                     <div class="route-path">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <!-- Smooth C-shaped curved path from top-left to bottom-left -->
-                            <path d="M 70,70 C 400,70 400,500 70,500" 
-                                  fill="none" 
-                                  stroke="#D4AF37" 
-                                  stroke-width="2" 
-                                  stroke-dasharray="6,6" 
-                                  opacity="0.75"/>
                         </svg>
                     </div>
                     
