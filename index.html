@@ -1315,8 +1315,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 175px; /* Increased size */
-            height: 175px; /* Increased size */
+            width: 131px;
+            height: 131px;
             z-index: 1;
         }
         
@@ -1331,8 +1331,8 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            width: 193px; /* Increased size */
-            height: 193px; /* Increased size */
+            width: 145px;
+            height: 145px;
             z-index: 1;
         }
         
@@ -1398,15 +1398,15 @@
             .airport-icon {
                 top: 15px;
                 left: 15px;
-                width: 123px; /* Adjusted for mobile */
-                height: 123px; /* Adjusted for mobile */
+                width: 92px; /* Adjusted for mobile */
+                height: 92px; /* Adjusted for mobile */
             }
             
             .mandap-icon {
                 bottom: 15px;
                 left: 15px;
-                width: 140px; /* Adjusted for mobile */
-                height: 140px; /* Adjusted for mobile */
+                width: 105px; /* Adjusted for mobile */
+                height: 105px; /* Adjusted for mobile */
             }
             
             .taxi-animated {
@@ -1688,14 +1688,14 @@
 
                             // Define path based on container dimensions
                             const isMobile = window.innerWidth <= 768;
-                            const startX = isMobile ? 140 : 200;
-                            const startY = isMobile ? 140 : 200;
-                            const endX = isMobile ? 160 : 120;
-                            const endY = isMobile ? containerHeight - 60 : containerHeight - 120;
-                            const controlX1 = containerWidth - (isMobile ? 50 : 70);
-                            const controlY1 = isMobile ? 50 : 70;
-                            const controlX2 = containerWidth - (isMobile ? 50 : 70);
-                            const controlY2 = isMobile ? containerHeight - 80 : containerHeight - 100;
+                            const startX = containerWidth * (isMobile ? 0.35 : 0.25);
+                            const startY = containerHeight * (isMobile ? 0.35 : 0.25);
+                            const endX = containerWidth * (isMobile ? 0.4 : 0.2);
+                            const endY = containerHeight * (isMobile ? 0.7 : 0.75);
+                            const controlX1 = containerWidth * 0.8;
+                            const controlY1 = containerHeight * 0.2;
+                            const controlX2 = containerWidth * 0.8;
+                            const controlY2 = containerHeight * 0.8;
 
                             const path = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
                             
