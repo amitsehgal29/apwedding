@@ -414,6 +414,10 @@
             z-index: 10;
             overflow: visible;
             min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .link-card h3 {
@@ -1282,8 +1286,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 140px; /* Increased size */
-            height: 140px; /* Increased size */
+            width: 175px; /* Increased size */
+            height: 175px; /* Increased size */
             z-index: 1;
         }
         
@@ -1298,8 +1302,8 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            width: 154px; /* Increased size */
-            height: 154px; /* Increased size */
+            width: 193px; /* Increased size */
+            height: 193px; /* Increased size */
             z-index: 1;
         }
         
@@ -1327,8 +1331,8 @@
         /* Animated taxi - bigger size */
         .taxi-animated {
             position: absolute;
-            width: 119px; /* Increased size */
-            height: 119px; /* Increased size */
+            width: 149px; /* Increased size */
+            height: 149px; /* Increased size */
             z-index: 2;
             opacity: 0;
             offset-rotate: auto; /* Taxi rotates along the path */
@@ -1365,20 +1369,20 @@
             .airport-icon {
                 top: 15px;
                 left: 15px;
-                width: 98px; /* Adjusted for mobile */
-                height: 98px; /* Adjusted for mobile */
+                width: 123px; /* Adjusted for mobile */
+                height: 123px; /* Adjusted for mobile */
             }
             
             .mandap-icon {
                 bottom: 15px;
                 left: 15px;
-                width: 112px; /* Adjusted for mobile */
-                height: 112px; /* Adjusted for mobile */
+                width: 140px; /* Adjusted for mobile */
+                height: 140px; /* Adjusted for mobile */
             }
             
             .taxi-animated {
-                width: 84px; /* Adjusted for mobile */
-                height: 84px; /* Adjusted for mobile */
+                width: 105px; /* Adjusted for mobile */
+                height: 105px; /* Adjusted for mobile */
             }
 
             #venue-card {
@@ -1386,9 +1390,9 @@
             }
 
             .btn {
-                padding: 8px 20px;
-                font-size: 0.55rem;
-                border-radius: 25px;
+                padding: 12px 25px;
+                font-size: 0.8rem;
+                border-radius: 30px;
             }
         }
     </style>
@@ -1543,9 +1547,11 @@
                     </div>
                 </div>
                 
-                <h3>📍 Venue Location</h3>
-                <p>Get directions to Gold Finch Hotel, Andheri East</p>
-                <a href="https://maps.app.goo.gl/KdNgw9WxxtoHyenq5" target="_blank" class="btn">Open in Google Maps</a>
+                <div class="venue-text-content">
+                    <h3>📍 Venue Location</h3>
+                    <p>Get directions to Gold Finch Hotel, Andheri East</p>
+                    <a href="https://maps.app.goo.gl/KdNgw9WxxtoHyenq5" target="_blank" class="btn">Open in Google Maps</a>
+                </div>
             </div>
 
             <!-- Message Form -->
