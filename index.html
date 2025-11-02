@@ -206,13 +206,13 @@
                     position: relative;
                     background: var(--ivory);
                     min-height: auto;
-                    padding: 1.875rem 1.25rem;
+                    padding: 1.875rem 0;
                     text-align: center;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     gap: 1.875rem;
-                    margin-bottom: 1.875rem;
+                    margin-bottom: 0;
                 }
 
                 .top-svg-container {
@@ -226,7 +226,7 @@
                     background-repeat: no-repeat;
                     z-index: 0;
                     pointer-events: none;
-                    mask-image: linear-gradient(to top, transparent, black 10%, black 90%, transparent),
+                    mask-image: linear-gradient(to top, transparent, black 20%, black 90%, transparent),
                                 linear-gradient(to right, transparent, black 10%, black 90%, transparent);
                     mask-composite: intersect;
                     -webkit-mask-composite: source-in;
@@ -1475,14 +1475,14 @@
 
     <!-- Welcome Section -->
     <section class="welcome-section">
-        <div class="welcome-message fade-in">
-            With great joy, we invite you to celebrate the union of two hearts, two families, and a lifetime of love
-        </div>
-        <div class="divider scale-in"></div>
         <div class="couple-names fade-in">
             Amit
             <span class="ampersand">& </span>
             Priyanka
+        </div>
+        <div class="divider scale-in"></div>
+        <div class="welcome-message fade-in">
+            With great joy, we invite you to celebrate the union of two hearts, two families, and a lifetime of love
         </div>
         <div class="divider scale-in"></div>
     </section>
