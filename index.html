@@ -1416,8 +1416,8 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            width: 45px;
-            height: 45px;
+            width: 60px;
+            height: 60px;
             z-index: 1;
         }
         
@@ -1427,13 +1427,13 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
         }
         
-        /* Mandap icon - bottom right */
+        /* Mandap icon - bottom LEFT */
         .mandap-icon {
             position: absolute;
             bottom: 15px;
-            right: 15px;
-            width: 55px;
-            height: 55px;
+            left: 15px;
+            width: 70px;
+            height: 70px;
             z-index: 1;
         }
         
@@ -1443,7 +1443,7 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
         }
         
-        /* Dotted path - smooth L-shaped route from airport to mandap */
+        /* Dotted path - C-shaped route from airport to mandap */
         .route-path {
             position: absolute;
             top: 0;
@@ -1458,11 +1458,11 @@
             height: 100%;
         }
         
-        /* Animated taxi */
+        /* Animated taxi - bigger size */
         .taxi-animated {
             position: absolute;
-            width: 35px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             z-index: 2;
             opacity: 0;
         }
@@ -1474,68 +1474,88 @@
         }
         
         .route-container.active .taxi-animated {
-            animation: taxiRoute 10s ease-in-out infinite;
+            animation: taxiRoute 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
         }
         
         @keyframes taxiRoute {
             0% {
-                top: 32px;
-                left: 32px;
-                transform: rotate(0deg);
+                top: 40px;
+                left: 40px;
+                transform: rotate(0deg) scale(1);
                 opacity: 0;
             }
-            3% {
+            2% {
                 opacity: 1;
             }
-            /* Move right along top */
-            30% {
-                top: 32px;
-                left: calc(100% - 70px);
-                transform: rotate(90deg);
-                opacity: 1;
+            /* Move right along top - natural acceleration */
+            8% {
+                top: 38px;
+                left: 70px;
+                transform: rotate(5deg) scale(1.02);
             }
-            /* Smooth turn */
-            35% {
-                top: 40px;
-                left: calc(100% - 65px);
-                transform: rotate(135deg);
-                opacity: 1;
+            25% {
+                top: 35px;
+                left: calc(100% - 80px);
+                transform: rotate(85deg) scale(1);
             }
-            /* Move down along right side */
-            60% {
-                top: calc(100% - 70px);
+            /* Smooth turn down - C curve starts */
+            28% {
+                top: 42px;
+                left: calc(100% - 75px);
+                transform: rotate(100deg) scale(0.98);
+            }
+            32% {
+                top: 55px;
+                left: calc(100% - 68px);
+                transform: rotate(120deg) scale(1);
+            }
+            /* Moving down right side */
+            45% {
+                top: calc(50% - 25px);
                 left: calc(100% - 60px);
-                transform: rotate(180deg);
-                opacity: 1;
+                transform: rotate(175deg) scale(1.01);
             }
-            /* Smooth turn left */
-            65% {
-                top: calc(100% - 65px);
-                left: calc(100% - 55px);
-                transform: rotate(225deg);
-                opacity: 1;
+            58% {
+                top: calc(100% - 80px);
+                left: calc(100% - 65px);
+                transform: rotate(185deg) scale(1);
             }
-            /* Move left to mandap */
-            85% {
+            /* Smooth turn left - bottom curve */
+            62% {
+                top: calc(100% - 72px);
+                left: calc(100% - 75px);
+                transform: rotate(210deg) scale(0.98);
+            }
+            68% {
                 top: calc(100% - 60px);
-                left: calc(100% - 50px);
-                transform: rotate(270deg);
-                opacity: 1;
+                left: calc(100% - 90px);
+                transform: rotate(250deg) scale(1);
+            }
+            /* Moving left along bottom - completing C */
+            75% {
+                top: calc(100% - 55px);
+                left: calc(50%);
+                transform: rotate(268deg) scale(1.01);
+            }
+            88% {
+                top: calc(100% - 50px);
+                left: 90px;
+                transform: rotate(272deg) scale(1);
             }
             /* Arrive at mandap */
-            92% {
-                top: calc(100% - 42px);
-                left: calc(100% - 45px);
-                transform: rotate(315deg);
-                opacity: 0.7;
+            94% {
+                top: calc(100% - 45px);
+                left: 55px;
+                transform: rotate(280deg) scale(0.95);
+                opacity: 1;
             }
-            95% {
-                opacity: 0.3;
+            97% {
+                opacity: 0.5;
             }
             100% {
-                top: calc(100% - 40px);
-                left: calc(100% - 42px);
-                transform: rotate(315deg);
+                top: calc(100% - 42px);
+                left: 50px;
+                transform: rotate(285deg) scale(0.9);
                 opacity: 0;
             }
         }
@@ -1544,75 +1564,95 @@
             .airport-icon {
                 top: 12px;
                 left: 12px;
-                width: 32px;
-                height: 32px;
+                width: 42px;
+                height: 42px;
             }
             
             .mandap-icon {
                 bottom: 12px;
-                right: 12px;
+                left: 12px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .taxi-animated {
                 width: 38px;
                 height: 38px;
             }
             
-            .taxi-animated {
-                width: 26px;
-                height: 26px;
-            }
-            
             @keyframes taxiRoute {
                 0% {
-                    top: 24px;
-                    left: 24px;
-                    transform: rotate(0deg);
+                    top: 30px;
+                    left: 30px;
+                    transform: rotate(0deg) scale(1);
                     opacity: 0;
                 }
-                3% {
+                2% {
                     opacity: 1;
                 }
-                30% {
-                    top: 24px;
-                    left: calc(100% - 50px);
-                    transform: rotate(90deg);
-                    opacity: 1;
-                }
-                35% {
+                8% {
                     top: 28px;
-                    left: calc(100% - 47px);
-                    transform: rotate(135deg);
+                    left: 50px;
+                    transform: rotate(5deg) scale(1.02);
+                }
+                25% {
+                    top: 26px;
+                    left: calc(100% - 60px);
+                    transform: rotate(85deg) scale(1);
+                }
+                28% {
+                    top: 32px;
+                    left: calc(100% - 56px);
+                    transform: rotate(100deg) scale(0.98);
+                }
+                32% {
+                    top: 42px;
+                    left: calc(100% - 50px);
+                    transform: rotate(120deg) scale(1);
+                }
+                45% {
+                    top: calc(50% - 20px);
+                    left: calc(100% - 45px);
+                    transform: rotate(175deg) scale(1.01);
+                }
+                58% {
+                    top: calc(100% - 60px);
+                    left: calc(100% - 48px);
+                    transform: rotate(185deg) scale(1);
+                }
+                62% {
+                    top: calc(100% - 54px);
+                    left: calc(100% - 56px);
+                    transform: rotate(210deg) scale(0.98);
+                }
+                68% {
+                    top: calc(100% - 45px);
+                    left: calc(100% - 68px);
+                    transform: rotate(250deg) scale(1);
+                }
+                75% {
+                    top: calc(100% - 42px);
+                    left: calc(50%);
+                    transform: rotate(268deg) scale(1.01);
+                }
+                88% {
+                    top: calc(100% - 38px);
+                    left: 65px;
+                    transform: rotate(272deg) scale(1);
+                }
+                94% {
+                    top: calc(100% - 34px);
+                    left: 42px;
+                    transform: rotate(280deg) scale(0.95);
                     opacity: 1;
                 }
-                60% {
-                    top: calc(100% - 50px);
-                    left: calc(100% - 44px);
-                    transform: rotate(180deg);
-                    opacity: 1;
-                }
-                65% {
-                    top: calc(100% - 47px);
-                    left: calc(100% - 40px);
-                    transform: rotate(225deg);
-                    opacity: 1;
-                }
-                85% {
-                    top: calc(100% - 44px);
-                    left: calc(100% - 36px);
-                    transform: rotate(270deg);
-                    opacity: 1;
-                }
-                92% {
-                    top: calc(100% - 32px);
-                    left: calc(100% - 33px);
-                    transform: rotate(315deg);
-                    opacity: 0.7;
-                }
-                95% {
-                    opacity: 0.3;
+                97% {
+                    opacity: 0.5;
                 }
                 100% {
-                    top: calc(100% - 30px);
-                    left: calc(100% - 31px);
-                    transform: rotate(315deg);
+                    top: calc(100% - 32px);
+                    left: 38px;
+                    transform: rotate(285deg) scale(0.9);
                     opacity: 0;
                 }
             }
@@ -1907,30 +1947,30 @@
             <div class="link-card fade-in arch-shaped" id="venue-card">
                 <!-- Route Animation Container -->
                 <div class="route-container">
-                    <!-- Airport icon -->
+                    <!-- Airport icon - top left -->
                     <div class="airport-icon">
                         <img src="airport.svg" alt="Airport">
                     </div>
                     
-                    <!-- Mandap icon -->
+                    <!-- Mandap icon - bottom left -->
                     <div class="mandap-icon">
                         <img src="mandap.svg" alt="Mandap">
                     </div>
                     
-                    <!-- Dotted path -->
+                    <!-- Dotted C-shaped path -->
                     <div class="route-path">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <!-- Smooth L-shaped path with rounded corners -->
-                            <path d="M 6,6 L 88,6 Q 94,6 94,12 L 94,88 Q 94,94 88,94 L 88,94" 
+                            <!-- Smooth C-shaped path from top-left to bottom-left -->
+                            <path d="M 8,8 L 85,8 Q 92,8 92,15 L 92,85 Q 92,92 85,92 L 12,92" 
                                   fill="none" 
                                   stroke="#D4AF37" 
-                                  stroke-width="0.4" 
-                                  stroke-dasharray="3,3" 
-                                  opacity="0.6"/>
+                                  stroke-width="0.5" 
+                                  stroke-dasharray="4,4" 
+                                  opacity="0.7"/>
                         </svg>
                     </div>
                     
-                    <!-- Animated taxi -->
+                    <!-- Animated taxi with natural movement -->
                     <div class="taxi-animated">
                         <img src="taxi.svg" alt="Taxi">
                     </div>
