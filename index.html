@@ -1416,8 +1416,8 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             z-index: 1;
         }
         
@@ -1432,8 +1432,8 @@
             position: absolute;
             bottom: 15px;
             left: 15px;
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             z-index: 1;
         }
         
@@ -1461,8 +1461,8 @@
         /* Animated taxi - bigger size */
         .taxi-animated {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 65px;
+            height: 65px;
             z-index: 2;
             opacity: 0;
         }
@@ -1474,88 +1474,76 @@
         }
         
         .route-container.active .taxi-animated {
-            animation: taxiRoute 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+            animation: taxiRoute 12s linear infinite;
         }
         
         @keyframes taxiRoute {
             0% {
-                top: 40px;
-                left: 40px;
-                transform: rotate(0deg) scale(1);
+                top: 55px;
+                left: 55px;
+                transform: rotate(0deg);
                 opacity: 0;
             }
             2% {
                 opacity: 1;
             }
-            /* Move right along top - natural acceleration */
-            8% {
-                top: 38px;
-                left: 70px;
-                transform: rotate(5deg) scale(1.02);
+            /* Move right along top */
+            20% {
+                top: 50px;
+                left: calc(100% - 100px);
+                transform: rotate(85deg);
             }
-            25% {
-                top: 35px;
-                left: calc(100% - 80px);
-                transform: rotate(85deg) scale(1);
+            /* Curve down right side - smooth C curve */
+            30% {
+                top: calc(25% - 30px);
+                left: calc(100% - 85px);
+                transform: rotate(130deg);
             }
-            /* Smooth turn down - C curve starts */
-            28% {
-                top: 42px;
+            40% {
+                top: calc(40% - 30px);
                 left: calc(100% - 75px);
-                transform: rotate(100deg) scale(0.98);
+                transform: rotate(160deg);
             }
-            32% {
-                top: 55px;
-                left: calc(100% - 68px);
-                transform: rotate(120deg) scale(1);
+            50% {
+                top: calc(55% - 30px);
+                left: calc(100% - 70px);
+                transform: rotate(180deg);
             }
-            /* Moving down right side */
-            45% {
-                top: calc(50% - 25px);
-                left: calc(100% - 60px);
-                transform: rotate(175deg) scale(1.01);
+            60% {
+                top: calc(70% - 30px);
+                left: calc(100% - 75px);
+                transform: rotate(200deg);
             }
-            58% {
+            /* Curve left along bottom */
+            70% {
                 top: calc(100% - 80px);
-                left: calc(100% - 65px);
-                transform: rotate(185deg) scale(1);
-            }
-            /* Smooth turn left - bottom curve */
-            62% {
-                top: calc(100% - 72px);
-                left: calc(100% - 75px);
-                transform: rotate(210deg) scale(0.98);
-            }
-            68% {
-                top: calc(100% - 60px);
                 left: calc(100% - 90px);
-                transform: rotate(250deg) scale(1);
+                transform: rotate(240deg);
             }
-            /* Moving left along bottom - completing C */
-            75% {
-                top: calc(100% - 55px);
-                left: calc(50%);
-                transform: rotate(268deg) scale(1.01);
+            80% {
+                top: calc(100% - 70px);
+                left: calc(60%);
+                transform: rotate(270deg);
             }
-            88% {
-                top: calc(100% - 50px);
-                left: 90px;
-                transform: rotate(272deg) scale(1);
+            90% {
+                top: calc(100% - 65px);
+                left: 120px;
+                transform: rotate(275deg);
             }
             /* Arrive at mandap */
-            94% {
-                top: calc(100% - 45px);
-                left: 55px;
-                transform: rotate(280deg) scale(0.95);
+            96% {
+                top: calc(100% - 60px);
+                left: 80px;
+                transform: rotate(280deg);
                 opacity: 1;
             }
-            97% {
+            98% {
                 opacity: 0.5;
             }
             100% {
-                top: calc(100% - 42px);
-                left: 50px;
-                transform: rotate(285deg) scale(0.9);
+                top: calc(100% - 55px);
+                left: 70px;
+                transform: rotate(285deg);
                 opacity: 0;
             }
         }
@@ -1564,95 +1552,85 @@
             .airport-icon {
                 top: 12px;
                 left: 12px;
-                width: 42px;
-                height: 42px;
+                width: 55px;
+                height: 55px;
             }
             
             .mandap-icon {
                 bottom: 12px;
                 left: 12px;
-                width: 50px;
-                height: 50px;
+                width: 65px;
+                height: 65px;
             }
             
             .taxi-animated {
-                width: 38px;
-                height: 38px;
+                width: 48px;
+                height: 48px;
             }
             
             @keyframes taxiRoute {
                 0% {
-                    top: 30px;
-                    left: 30px;
-                    transform: rotate(0deg) scale(1);
+                    top: 40px;
+                    left: 40px;
+                    transform: rotate(0deg);
                     opacity: 0;
                 }
                 2% {
                     opacity: 1;
                 }
-                8% {
-                    top: 28px;
-                    left: 50px;
-                    transform: rotate(5deg) scale(1.02);
+                20% {
+                    top: 36px;
+                    left: calc(100% - 75px);
+                    transform: rotate(85deg);
                 }
-                25% {
-                    top: 26px;
-                    left: calc(100% - 60px);
-                    transform: rotate(85deg) scale(1);
+                30% {
+                    top: calc(25% - 20px);
+                    left: calc(100% - 62px);
+                    transform: rotate(130deg);
                 }
-                28% {
-                    top: 32px;
-                    left: calc(100% - 56px);
-                    transform: rotate(100deg) scale(0.98);
+                40% {
+                    top: calc(40% - 20px);
+                    left: calc(100% - 55px);
+                    transform: rotate(160deg);
                 }
-                32% {
-                    top: 42px;
-                    left: calc(100% - 50px);
-                    transform: rotate(120deg) scale(1);
+                50% {
+                    top: calc(55% - 20px);
+                    left: calc(100% - 52px);
+                    transform: rotate(180deg);
                 }
-                45% {
-                    top: calc(50% - 20px);
-                    left: calc(100% - 45px);
-                    transform: rotate(175deg) scale(1.01);
+                60% {
+                    top: calc(70% - 20px);
+                    left: calc(100% - 55px);
+                    transform: rotate(200deg);
                 }
-                58% {
+                70% {
                     top: calc(100% - 60px);
-                    left: calc(100% - 48px);
-                    transform: rotate(185deg) scale(1);
-                }
-                62% {
-                    top: calc(100% - 54px);
-                    left: calc(100% - 56px);
-                    transform: rotate(210deg) scale(0.98);
-                }
-                68% {
-                    top: calc(100% - 45px);
                     left: calc(100% - 68px);
-                    transform: rotate(250deg) scale(1);
+                    transform: rotate(240deg);
                 }
-                75% {
-                    top: calc(100% - 42px);
-                    left: calc(50%);
-                    transform: rotate(268deg) scale(1.01);
+                80% {
+                    top: calc(100% - 52px);
+                    left: calc(60%);
+                    transform: rotate(270deg);
                 }
-                88% {
-                    top: calc(100% - 38px);
-                    left: 65px;
-                    transform: rotate(272deg) scale(1);
+                90% {
+                    top: calc(100% - 48px);
+                    left: 85px;
+                    transform: rotate(275deg);
                 }
-                94% {
-                    top: calc(100% - 34px);
-                    left: 42px;
-                    transform: rotate(280deg) scale(0.95);
+                96% {
+                    top: calc(100% - 45px);
+                    left: 60px;
+                    transform: rotate(280deg);
                     opacity: 1;
                 }
-                97% {
+                98% {
                     opacity: 0.5;
                 }
                 100% {
-                    top: calc(100% - 32px);
-                    left: 38px;
-                    transform: rotate(285deg) scale(0.9);
+                    top: calc(100% - 42px);
+                    left: 52px;
+                    transform: rotate(285deg);
                     opacity: 0;
                 }
             }
@@ -1960,13 +1938,13 @@
                     <!-- Dotted C-shaped path -->
                     <div class="route-path">
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <!-- Smooth C-shaped path from top-left to bottom-left -->
-                            <path d="M 8,8 L 85,8 Q 92,8 92,15 L 92,85 Q 92,92 85,92 L 12,92" 
+                            <!-- Smooth C-shaped curved path from top-left to bottom-left -->
+                            <path d="M 10,10 L 82,10 Q 90,10 90,18 Q 90,30 90,50 Q 90,70 90,82 Q 90,90 82,90 L 15,90" 
                                   fill="none" 
                                   stroke="#D4AF37" 
-                                  stroke-width="0.5" 
+                                  stroke-width="0.6" 
                                   stroke-dasharray="4,4" 
-                                  opacity="0.7"/>
+                                  opacity="0.75"/>
                         </svg>
                     </div>
                     
