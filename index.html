@@ -140,7 +140,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: 3.75rem 1.25rem;
             position: relative;
         }
 
@@ -148,15 +148,15 @@
         .welcome-section {
             background: var(--cream);
             min-height: auto;
-            padding: 30px 20px;
+            padding: 1.875rem 1.25rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 1.875rem;
+            margin-bottom: 1.875rem;
         }        .welcome-message {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-family: 'Cormorant Garamond', serif;
             color: var(--rose);
             margin-bottom: 0;
@@ -167,7 +167,7 @@
         }
 
         .couple-names {
-            font-size: 6.5rem;
+            font-size: clamp(3rem, 10vw, 6.5rem);
             font-family: 'Amoresa', cursive;
             color: var(--gold);
             margin: 0;
@@ -178,50 +178,87 @@
 
         .ampersand {
             font-family: 'Amoresa', cursive;
-            font-size: 5rem;
+            font-size: clamp(2.5rem, 8vw, 5rem);
             color: var(--rose);
             display: block;
             margin: 0;
         }
 
-        .divider {
-            width: 200px;
-            height: 2px;
-            background: var(--gold);
-            margin: 30px auto;
-            opacity: 0.6;
-        }
+                .divider {
 
-        /* Ganesh Section */
-        .ganesh-section {
-            background: var(--ivory);
-            min-height: auto;
-            padding: 30px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
+                    width: 12.5rem;
 
-        .ganesh-mantra {
-            font-size: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--rose);
-            margin-bottom: 0;
-            letter-spacing: 0.1em;
-            font-weight: 400;
-            text-align: center;
-        }
+                    height: 0.125rem;
 
-        .ganesh-icon {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-            display: block;
-            background: transparent;
-        }
+                    background: var(--gold);
+
+                    margin: 1.875rem auto;
+
+                    opacity: 0.6;
+
+                }
+
+        
+
+                /* Ganesh Section */
+
+                .ganesh-section {
+
+                    background: var(--ivory);
+
+                    min-height: auto;
+
+                    padding: 1.875rem 1.25rem;
+
+                    text-align: center;
+
+                    display: flex;
+
+                    flex-direction: column;
+
+                    align-items: center;
+
+                    gap: 1.875rem;
+
+                    margin-bottom: 1.875rem;
+
+                }
+
+        
+
+                .ganesh-mantra {
+
+                    font-size: clamp(1.5rem, 4vw, 2rem);
+
+                    font-family: 'Cormorant Garamond', serif;
+
+                    color: var(--rose);
+
+                    margin-bottom: 0;
+
+                    letter-spacing: 0.1em;
+
+                    font-weight: 400;
+
+                    text-align: center;
+
+                }
+
+        
+
+                .ganesh-icon {
+
+                    width: 9.375rem;
+
+                    height: 9.375rem;
+
+                    margin: 0 auto;
+
+                    display: block;
+
+                    background: transparent;
+
+                }
 
         .ganesh-icon img {
             width: 100%;
@@ -256,9 +293,9 @@
 
         .invitation-content {
             max-width: 800px;
-            padding: 30px;
+            padding: 1.875rem;
             background: var(--warm-white);
-            border-radius: 20px;
+            border-radius: 1.25rem;
             box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
             border: 2px solid var(--light-gold);
             position: relative;
@@ -266,9 +303,9 @@
         }
 
         .invitation-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--gold);
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             font-family: 'Playfair Display', serif;
             font-weight: 400;
         }
@@ -278,7 +315,7 @@
             font-family: 'Cormorant Garamond', serif;
             color: var(--gold);
             line-height: 2;
-            margin: 30px 0;
+            margin: 1.875rem 0;
             font-weight: 400;
             text-align: center;
         }
@@ -287,7 +324,7 @@
             font-size: 2rem;
             font-weight: 500;
             color: var(--rose);
-            margin: 30px 0;
+            margin: 1.875rem 0;
             font-family: 'Playfair Display', serif;
             text-align: center;
             letter-spacing: 0.1em;
@@ -296,7 +333,7 @@
         .venue-name {
             font-size: 1.5rem;
             color: var(--gold);
-            margin-top: 30px;
+            margin-top: 1.875rem;
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
             font-weight: 500;
@@ -307,36 +344,36 @@
             background: var(--cream);
             flex-direction: column;
             min-height: auto;
-            padding: 60px 20px 30px 20px;
+            padding: 3.75rem 1.25rem 1.875rem 1.25rem;
             margin-bottom: 0;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--gold);
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
             font-family: 'Playfair Display', serif;
             font-weight: 400;
         }
         
         /* Extra spacing for Helpful Information section title */
         .links-section .section-title {
-            margin-bottom: 120px;
+            margin-bottom: 7.5rem;
         }
 
         .events-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 1.875rem;
             max-width: 1000px;
             width: 100%;
         }
 
         .event-card {
             background: var(--warm-white);
-            padding: 30px;
-            border-radius: 20px;
+            padding: 1.875rem;
+            border-radius: 1.25rem;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
             border: 2px solid var(--light-gold);
             text-align: center;
@@ -351,16 +388,16 @@
         }
 
         .event-name {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             color: var(--gold);
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             font-family: 'Playfair Display', serif;
             font-weight: 400;
         }
 
         .event-details {
             font-size: 1.2rem;
-            margin: 30px 0;
+            margin: 1.875rem 0;
             color: var(--gold);
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
@@ -370,7 +407,7 @@
         .event-details strong {
             color: var(--rose);
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-size: 1.3rem;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
@@ -379,10 +416,10 @@
         }
 
         .dress-code {
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 1.875rem;
+            padding: 1.25rem;
             background: var(--light-gold);
-            border-radius: 15px;
+            border-radius: 0.9375rem;
             font-style: italic;
             color: var(--rose);
             font-family: 'Cormorant Garamond', serif;
@@ -395,7 +432,7 @@
         .links-section {
             background: var(--ivory);
             min-height: auto;
-            padding: 60px 20px 30px 20px;
+            padding: 3.75rem 1.25rem 1.875rem 1.25rem;
         }
 
         .links-container {
@@ -405,15 +442,15 @@
 
         .link-card {
             background: var(--warm-white);
-            padding: 30px 30px 50px 30px;
-            border-radius: 20px;
-            margin-bottom: 80px;
+            padding: 1.875rem 1.875rem 3.125rem 1.875rem;
+            border-radius: 1.25rem;
+            margin-bottom: 5rem;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.12);
             border: 2px solid var(--light-gold);
             position: relative;
             z-index: 10;
             overflow: visible;
-            min-height: 400px;
+            min-height: 25rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -423,8 +460,8 @@
         .link-card h3 {
             font-size: 2rem;
             color: var(--gold);
-            margin-bottom: 30px;
-            margin-top: 150px;
+            margin-bottom: 1.875rem;
+            margin-top: 14rem;
             font-family: 'Playfair Display', serif;
             text-align: center;
             font-weight: 400;
@@ -433,7 +470,7 @@
         }
 
         .link-card p {
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             color: var(--gold);
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
@@ -444,7 +481,7 @@
         
         /* Only apply top margin to photo upload section */
         .link-card:has(.polaroid-container) h3 {
-            margin-top: 150px;
+            margin-top: 14rem;
         }
         
         /* Other sections keep normal margin */
@@ -454,15 +491,15 @@
 
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 0.9375rem 2.5rem;
             background: transparent;
             color: var(--gold);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 3.125rem;
             font-weight: 500;
             transition: all 0.3s ease;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
             font-family: 'Montserrat', sans-serif;
             border: 2px solid var(--gold);
             margin: 0 auto;
@@ -510,8 +547,8 @@
         /* Message Form */
         .message-form {
             background: transparent;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 1.875rem;
+            border-radius: 0.9375rem;
             box-shadow: none;
             text-align: center;
             position: relative;
@@ -519,7 +556,7 @@
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             text-align: center;
             position: relative;
             z-index: 5;
@@ -527,7 +564,7 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem;
             color: var(--rose);
             font-weight: 500;
             font-family: 'Montserrat', sans-serif;
@@ -539,9 +576,9 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 0.9375rem;
             border: 1px solid var(--light-gold);
-            border-radius: 10px;
+            border-radius: 0.625rem;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -556,15 +593,15 @@
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 7.5rem;
             resize: vertical;
         }
 
         /* Form Messages */
         #form-messages {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            padding: 0.9375rem;
+            border-radius: 0.625rem;
             display: none;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
@@ -721,7 +758,7 @@
             background: var(--gold);
             color: var(--cream);
             text-align: center;
-            padding: 30px 20px;
+            padding: 1.875rem 1.25rem;
         }
 
         footer p {
@@ -732,46 +769,28 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .couple-names {
-                font-size: 3rem;
-            }
 
-            .ampersand {
-                font-size: 2.5rem;
-            }
 
-            .section-title {
-                font-size: 2rem;
-            }
 
-            .invitation-title {
-                font-size: 1.8rem;
-            }
 
             .invitation-content {
-                padding: 40px 30px;
+                padding: 2.5rem 1.875rem;
             }
 
             .events-container {
                 grid-template-columns: 1fr;
             }
 
-            .welcome-message {
-                font-size: 1.2rem;
-            }
 
-            .ganesh-mantra {
-                font-size: 1.5rem;
-            }
 
             .ganesh-icon {
-                width: 100px;
-                height: 100px;
+                width: 6.25rem;
+                height: 6.25rem;
             }
 
             /* Wider form inputs on mobile */
             .message-form {
-                padding: 20px 10px;
+                padding: 1.25rem 0.625rem;
             }
 
             .form-group input,
@@ -1110,10 +1129,10 @@
         /* Polaroid Photos on Rope */
         .polaroid-container {
             position: absolute;
-            top: -40px;
+            top: 1.875rem;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 12.5rem;
             pointer-events: none;
             z-index: 1;
             opacity: 0.6;
@@ -1257,40 +1276,40 @@
             .polaroid:nth-child(3) img,
             .polaroid:nth-child(4) img,
             .polaroid:nth-child(5) img {
-                width: 90px;
+                width: 5.625rem;
             }
 
             .polaroid:nth-child(2) {
                 left: 12%;
-                top: 18px;
+                top: 1.125rem;
             }
 
             .polaroid:nth-child(3) {
                 left: 35%;
-                top: 55px;
+                top: 3.4375rem;
             }
 
             .polaroid:nth-child(4) {
                 left: 58%;
-                top: 57px;
+                top: 3.5625rem;
             }
 
             .polaroid:nth-child(5) {
                 left: 81%;
-                top: 20px;
+                top: 1.25rem;
             }
 
             .polaroid-container {
-                height: 180px;
-                top: -30px;
+                height: 11.25rem;
+                top: 1.875rem;
             }
 
             .rope {
-                height: 80px;
+                height: 5rem;
             }
 
             .rope::before {
-                height: 80px;
+                height: 5rem;
             }
         }
         /* Route Animation for Venue Location */
@@ -1396,32 +1415,31 @@
         
         @media (max-width: 768px) {
             .airport-icon {
-                top: 15px;
-                left: 15px;
-                width: 92px; /* Adjusted for mobile */
-                height: 92px; /* Adjusted for mobile */
+                top: 0.9375rem;
+                left: 0.9375rem;
+                width: 5.75rem;
+                height: 5.75rem;
             }
             
             .mandap-icon {
-                bottom: 15px;
-                left: 15px;
-                width: 105px; /* Adjusted for mobile */
-                height: 105px; /* Adjusted for mobile */
+                bottom: 0.9375rem;
+                left: 0.9375rem;
+                width: 6.5625rem;
+                height: 6.5625rem;
             }
             
             .taxi-animated {
-                width: 105px; /* Adjusted for mobile */
-                height: 105px; /* Adjusted for mobile */
+                width: 6.5625rem;
+                height: 6.5625rem;
             }
 
             #venue-card {
-                min-height: 550px;
+                min-height: 34.375rem;
             }
 
             .btn {
-                padding: 12px 25px;
-                font-size: 0.8rem;
-                border-radius: 30px;
+                padding: 0.75rem 1.5625rem;
+                border-radius: 1.875rem;
             }
         }
     </style>
