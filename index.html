@@ -1393,6 +1393,53 @@
                 height: 80px;
             }
         }
+        
+        /* Animated Taxi */
+        .taxi-container {
+            position: absolute;
+            bottom: 20px;
+            left: -100px;
+            width: 80px;
+            height: auto;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+        }
+        
+        .taxi-container.active {
+            animation: driveTaxi 8s ease-in-out forwards;
+        }
+        
+        .taxi {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        @keyframes driveTaxi {
+            0% {
+                left: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                left: calc(100% + 20px);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .taxi-container {
+                width: 60px;
+                bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1680,7 +1727,12 @@
             <h2 class="section-title fade-in">Helpful Information</h2>
             
             <!-- Google Maps Link -->
-            <div class="link-card fade-in arch-shaped">
+            <div class="link-card fade-in arch-shaped" id="venue-card">
+                <!-- Animated Taxi -->
+                <div class="taxi-container">
+                    <img src="taxi.png" alt="Taxi" class="taxi">
+                </div>
+                
                 <h3>📍 Venue Location</h3>
                 <p>Get directions to Gold Finch Hotel, Andheri East</p>
                 <a href="https://maps.app.goo.gl/KdNgw9WxxtoHyenq5" target="_blank" class="btn">Open in Google Maps</a>
@@ -1775,6 +1827,7 @@
                         const fireworks = entry.target.querySelector('.fireworks-container');
                         const flowers = entry.target.querySelector('.flower-shower-container');
                         const floatingLetters = entry.target.querySelector('.floating-letters-container');
+                        const taxiContainer = entry.target.querySelector('.taxi-container');
                         
                         if (fireworks) {
                             fireworks.classList.add('active');
@@ -1794,6 +1847,9 @@
                         }
                         if (floatingLetters) {
                             floatingLetters.classList.add('active');
+                        }
+                        if (taxiContainer) {
+                            taxiContainer.classList.add('active');
                         }
                     }
                 });
