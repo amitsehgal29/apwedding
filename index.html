@@ -62,7 +62,6 @@
             background: var(--cream);
             color: var(--gold);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -204,12 +203,12 @@
         }
 
         .shehnai.left {
-            top: 50%;
+            top: 35%;
             left: 0;
         }
 
         .shehnai.right {
-            top: 50%;
+            top: 35%;
             right: 0;
             transform: scaleX(-1); /* Mirrored */
         }
@@ -248,8 +247,9 @@
                 .top-svg-container {
                     position: absolute;
                     top: 0;
-                    left: 0;
-                    width: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100vw;
                     height: 100%;
                     background-image: url(top.svg);
                     background-size: 100% 100%;
@@ -278,6 +278,7 @@
                     font-weight: 400;
 
                     text-align: center;
+                    transform: translateY(-10px);
 
                 }
 
@@ -1270,7 +1271,7 @@
 
         .polaroid:nth-child(2) {
             left: 12%;
-            top: 20px;
+            top: 27px;
             animation: sway1 3.5s ease-in-out infinite alternate;
         }
 
@@ -1280,7 +1281,7 @@
 
         .polaroid:nth-child(3) {
             left: 35%;
-            top: 65px;
+            top: 46px;
             animation: sway2 4s ease-in-out infinite alternate;
         }
 
@@ -1290,7 +1291,7 @@
 
         .polaroid:nth-child(4) {
             left: 58%;
-            top: 67px;
+            top: 49px;
             animation: sway3 3.8s ease-in-out infinite alternate;
         }
 
@@ -1300,7 +1301,7 @@
 
         .polaroid:nth-child(5) {
             left: 81%;
-            top: 22px;
+            top: 35px;
             animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
@@ -1497,9 +1498,6 @@
     <section class="ganesh-section">
         <div class="top-svg-container"></div>
         <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
-        <div class="ganesh-icon scale-in">
-            <img src="ganpati.png" alt="Shree Ganesh" loading="eager">
-        </div>
     </section>
 
     <!-- Welcome Section -->
@@ -1507,6 +1505,9 @@
         <div class="shehnai-container">
             <img src="shehnai.svg" class="shehnai left" alt="Shehnai">
             <img src="shehnai.svg" class="shehnai right" alt="Shehnai">
+        </div>
+        <div class="ganesh-icon scale-in">
+            <img src="ganpati.png" alt="Shree Ganesh" loading="eager">
         </div>
         <div class="couple-names fade-in">
             Amit
