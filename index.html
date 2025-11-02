@@ -221,14 +221,11 @@
                     left: 0;
                     width: 100%;
                     height: 100%;
+                    background-image: url(top.svg);
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
                     z-index: 0;
                     pointer-events: none;
-                }
-
-                .top-svg-container img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
                     mask-image: linear-gradient(to top, transparent, black 10%, black 90%, transparent),
                                 linear-gradient(to right, transparent, black 10%, black 90%, transparent);
                     mask-composite: intersect;
@@ -1469,9 +1466,7 @@
 
     <!-- Ganesh Section -->
     <section class="ganesh-section">
-        <div class="top-svg-container">
-            <img src="top.svg" alt="Decorative Top Border">
-        </div>
+        <div class="top-svg-container"></div>
         <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
         <div class="ganesh-icon scale-in">
             <img src="ganpati.png" alt="Shree Ganesh" loading="eager">
