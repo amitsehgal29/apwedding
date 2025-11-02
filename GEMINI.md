@@ -46,3 +46,16 @@ This is a static website. To view it, simply open the `index.html` file in a web
     *   The animation is directly controlled by the scroll position relative to the `welcome-section`.
     *   Shehnais are initially off-screen on page load and animate smoothly into view within a defined scroll range.
     *   CSS `transform` properties are directly manipulated by JavaScript on `requestAnimationFrame` calls for smooth scrubbing, without relying on CSS transitions for the animated properties.
+*   **Shehnai Animation:**
+    *   Rebuilt the animation to be directly controlled by the window's scroll position for a "scrubbable" effect.
+    *   Adjusted the size and vertical position of the shehnais to be larger and in line with the ampersand.
+    *   The shehnais now start in a half-visible state at the top of the page and animate into full view on scroll.
+*   **Polaroid Photos:**
+    *   Adjusted the `top` position of the polaroid photos to align them correctly with the rope they are hanging from, using values calculated from the rope's Bezier curve.
+*   **Ganesh Section:**
+    *   Moved the Ganpati icon from the Ganesh section to the Welcome section, just above the couple's names.
+    *   Doubled the height of the Ganesh section by increasing its vertical padding.
+    *   Reduced the size of the Ganpati icon by 30%.
+    *   Moved the Ganesh mantra up to the top of the section.
+*   **Top SVG:**
+    *   Fixed an issue where the `top.svg` background image was not spanning the full width of the screen by using `width: 100vw` and removing `overflow-x: hidden` from the body.
