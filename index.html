@@ -1394,119 +1394,225 @@
             }
         }
         
-        /* Animated Taxi */
-        .taxi-container {
+        /* Route Animation for Venue Location */
+        .route-container {
             position: absolute;
-            bottom: 30px;
-            left: -150px;
-            width: 120px;
-            height: auto;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .route-container.active {
+            opacity: 1;
+        }
+        
+        /* Airport icon - top left */
+        .airport-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 45px;
+            height: 45px;
             z-index: 1;
+        }
+        
+        .airport-icon img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+        }
+        
+        /* Mandap icon - bottom right */
+        .mandap-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 55px;
+            height: 55px;
+            z-index: 1;
+        }
+        
+        .mandap-icon img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+        }
+        
+        /* Dotted path - smooth L-shaped route from airport to mandap */
+        .route-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .route-path svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Animated taxi */
+        .taxi-animated {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            z-index: 2;
             opacity: 0;
         }
         
-        .taxi-container.active {
-            animation: driveTaxi 10s ease-in-out forwards;
-        }
-        
-        .taxi {
+        .taxi-animated img {
             width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-            background: transparent;
+            height: 100%;
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
         }
         
-        @keyframes driveTaxi {
+        .route-container.active .taxi-animated {
+            animation: taxiRoute 10s ease-in-out infinite;
+        }
+        
+        @keyframes taxiRoute {
             0% {
-                left: -150px;
-                bottom: 30px;
+                top: 32px;
+                left: 32px;
+                transform: rotate(0deg);
                 opacity: 0;
             }
-            5% {
+            3% {
                 opacity: 1;
             }
-            15% {
-                bottom: 35px;
+            /* Move right along top */
+            30% {
+                top: 32px;
+                left: calc(100% - 70px);
+                transform: rotate(90deg);
+                opacity: 1;
             }
-            25% {
-                bottom: 28px;
-            }
+            /* Smooth turn */
             35% {
-                bottom: 36px;
-            }
-            45% {
-                bottom: 29px;
-            }
-            55% {
-                bottom: 34px;
-            }
-            65% {
-                bottom: 30px;
-            }
-            75% {
-                bottom: 33px;
-            }
-            85% {
-                bottom: 31px;
-            }
-            92% {
+                top: 40px;
+                left: calc(100% - 65px);
+                transform: rotate(135deg);
                 opacity: 1;
+            }
+            /* Move down along right side */
+            60% {
+                top: calc(100% - 70px);
+                left: calc(100% - 60px);
+                transform: rotate(180deg);
+                opacity: 1;
+            }
+            /* Smooth turn left */
+            65% {
+                top: calc(100% - 65px);
+                left: calc(100% - 55px);
+                transform: rotate(225deg);
+                opacity: 1;
+            }
+            /* Move left to mandap */
+            85% {
+                top: calc(100% - 60px);
+                left: calc(100% - 50px);
+                transform: rotate(270deg);
+                opacity: 1;
+            }
+            /* Arrive at mandap */
+            92% {
+                top: calc(100% - 42px);
+                left: calc(100% - 45px);
+                transform: rotate(315deg);
+                opacity: 0.7;
+            }
+            95% {
+                opacity: 0.3;
             }
             100% {
-                left: calc(100% - 140px);
-                bottom: 30px;
+                top: calc(100% - 40px);
+                left: calc(100% - 42px);
+                transform: rotate(315deg);
                 opacity: 0;
             }
         }
         
         @media (max-width: 768px) {
-            .taxi-container {
-                width: 80px;
-                bottom: 20px;
-                left: -100px;
+            .airport-icon {
+                top: 12px;
+                left: 12px;
+                width: 32px;
+                height: 32px;
             }
             
-            @keyframes driveTaxi {
+            .mandap-icon {
+                bottom: 12px;
+                right: 12px;
+                width: 38px;
+                height: 38px;
+            }
+            
+            .taxi-animated {
+                width: 26px;
+                height: 26px;
+            }
+            
+            @keyframes taxiRoute {
                 0% {
-                    left: -100px;
-                    bottom: 20px;
+                    top: 24px;
+                    left: 24px;
+                    transform: rotate(0deg);
                     opacity: 0;
                 }
-                5% {
+                3% {
                     opacity: 1;
                 }
-                15% {
-                    bottom: 24px;
-                }
-                25% {
-                    bottom: 18px;
+                30% {
+                    top: 24px;
+                    left: calc(100% - 50px);
+                    transform: rotate(90deg);
+                    opacity: 1;
                 }
                 35% {
-                    bottom: 25px;
-                }
-                45% {
-                    bottom: 19px;
-                }
-                55% {
-                    bottom: 23px;
-                }
-                65% {
-                    bottom: 20px;
-                }
-                75% {
-                    bottom: 22px;
-                }
-                85% {
-                    bottom: 21px;
-                }
-                92% {
+                    top: 28px;
+                    left: calc(100% - 47px);
+                    transform: rotate(135deg);
                     opacity: 1;
                 }
+                60% {
+                    top: calc(100% - 50px);
+                    left: calc(100% - 44px);
+                    transform: rotate(180deg);
+                    opacity: 1;
+                }
+                65% {
+                    top: calc(100% - 47px);
+                    left: calc(100% - 40px);
+                    transform: rotate(225deg);
+                    opacity: 1;
+                }
+                85% {
+                    top: calc(100% - 44px);
+                    left: calc(100% - 36px);
+                    transform: rotate(270deg);
+                    opacity: 1;
+                }
+                92% {
+                    top: calc(100% - 32px);
+                    left: calc(100% - 33px);
+                    transform: rotate(315deg);
+                    opacity: 0.7;
+                }
+                95% {
+                    opacity: 0.3;
+                }
                 100% {
-                    left: calc(100% - 100px);
-                    bottom: 20px;
+                    top: calc(100% - 30px);
+                    left: calc(100% - 31px);
+                    transform: rotate(315deg);
                     opacity: 0;
                 }
             }
@@ -1799,9 +1905,35 @@
             
             <!-- Google Maps Link -->
             <div class="link-card fade-in arch-shaped" id="venue-card">
-                <!-- Animated Taxi -->
-                <div class="taxi-container">
-                    <img src="taxi.svg" alt="Taxi" class="taxi">
+                <!-- Route Animation Container -->
+                <div class="route-container">
+                    <!-- Airport icon -->
+                    <div class="airport-icon">
+                        <img src="airport.svg" alt="Airport">
+                    </div>
+                    
+                    <!-- Mandap icon -->
+                    <div class="mandap-icon">
+                        <img src="mandap.svg" alt="Mandap">
+                    </div>
+                    
+                    <!-- Dotted path -->
+                    <div class="route-path">
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <!-- Smooth L-shaped path with rounded corners -->
+                            <path d="M 6,6 L 88,6 Q 94,6 94,12 L 94,88 Q 94,94 88,94 L 88,94" 
+                                  fill="none" 
+                                  stroke="#D4AF37" 
+                                  stroke-width="0.4" 
+                                  stroke-dasharray="3,3" 
+                                  opacity="0.6"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Animated taxi -->
+                    <div class="taxi-animated">
+                        <img src="taxi.svg" alt="Taxi">
+                    </div>
                 </div>
                 
                 <h3>📍 Venue Location</h3>
@@ -1898,7 +2030,7 @@
                         const fireworks = entry.target.querySelector('.fireworks-container');
                         const flowers = entry.target.querySelector('.flower-shower-container');
                         const floatingLetters = entry.target.querySelector('.floating-letters-container');
-                        const taxiContainer = entry.target.querySelector('.taxi-container');
+                        const routeContainer = entry.target.querySelector('.route-container');
                         
                         if (fireworks) {
                             fireworks.classList.add('active');
@@ -1919,8 +2051,8 @@
                         if (floatingLetters) {
                             floatingLetters.classList.add('active');
                         }
-                        if (taxiContainer) {
-                            taxiContainer.classList.add('active');
+                        if (routeContainer) {
+                            routeContainer.classList.add('active');
                         }
                     }
                 });
