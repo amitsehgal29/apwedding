@@ -31,3 +31,18 @@ This is a static website. To view it, simply open the `index.html` file in a web
     *   The fireworks are particle-based and continuous.
     *   The animation is responsive and uses the website's color palette.
     *   The animation was refined to be more "natural" with varying rocket speeds, burst sizes, and a gravity effect.
+*   **`top.svg` Integration:**
+    *   Added `top.svg` as a background image to the top section, spanning end-to-end with a gradient fade on all four borders.
+    *   Updated `top.svg` to a less tall version for better visual fit.
+    *   Adjusted the `mask-image` CSS property for a more pronounced fade at the bottom of `top.svg`.
+    *   Removed horizontal padding and bottom margin from the `.ganesh-section` to ensure `top.svg` spans end-to-end and to remove any unwanted visual borders.
+    *   Merged the Ganesh mantra and Ganpati icon into a single cohesive top section.
+*   **Page Layout Reordering:**
+    *   Reordered elements in the `welcome-section` to place the couple's names above the welcome message.
+    *   Moved the Ganpati image to be below the Ganesh mantra within the top section.
+*   **Shehnai Scroll Animation:**
+    *   Added `shehnai.svg` images (left and right, mirrored) to the `welcome-section`.
+    *   Implemented a scroll-driven animation for the shehnai images using JavaScript, making them appear and rotate as the user scrolls down, and recede when scrolling up.
+    *   The animation is directly controlled by the scroll position relative to the `welcome-section`.
+    *   Shehnais are initially off-screen on page load and animate smoothly into view within a defined scroll range.
+    *   CSS `transform` properties are directly manipulated by JavaScript on `requestAnimationFrame` calls for smooth scrubbing, without relying on CSS transitions for the animated properties.

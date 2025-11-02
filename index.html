@@ -184,6 +184,36 @@
             margin: 0;
         }
 
+        .shehnai-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shehnai {
+            position: absolute;
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        .shehnai.left {
+            top: 50%;
+            left: 0;
+        }
+
+        .shehnai.right {
+            top: 50%;
+            right: 0;
+            transform: scaleX(-1); /* Mirrored */
+        }
+
                 .divider {
 
                     width: 12.5rem;
@@ -1475,6 +1505,10 @@
 
     <!-- Welcome Section -->
     <section class="welcome-section">
+        <div class="shehnai-container">
+            <img src="shehnai.svg" class="shehnai left" alt="Shehnai">
+            <img src="shehnai.svg" class="shehnai right" alt="Shehnai">
+        </div>
         <div class="couple-names fade-in">
             Amit
             <span class="ampersand">& </span>
@@ -1753,6 +1787,56 @@
             // Observe link cards for floating letters
             const linkCards = document.querySelectorAll('.link-card');
             linkCards.forEach(card => effectsObserver.observe(card));
+
+            const welcomeSection = document.querySelector('.welcome-section');
+            const shehnaiLeft = document.querySelector('.shehnai.left');
+            const shehnaiRight = document.querySelector('.shehnai.right');
+
+            // Function to update the shehnai animation based on scroll position
+            function updateShehnaiAnimation() {
+                if (!welcomeSection || !shehnaiLeft || !shehnaiRight) {
+                    return;
+                }
+
+                const rect = welcomeSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+
+                // Define the scroll range for the animation
+                // Animation starts when the top of the welcomeSection is at 90% of the viewport height
+                // Animation ends when the top of the welcomeSection is at 40% of the viewport height
+                const animationStartScrollPoint = viewportHeight * 0.9;
+                const animationEndScrollPoint = viewportHeight * 0.4;
+
+                // Calculate raw progress based on rect.top
+                // When rect.top is animationStartScrollPoint, progress should be 0
+                // When rect.top is animationEndScrollPoint, progress should be 1
+                const rawProgress = (animationStartScrollPoint - rect.top) / (animationStartScrollPoint - animationEndScrollPoint);
+
+                // Clamp progress between 0 and 1
+                const clampedProgress = Math.max(0, Math.min(1, rawProgress));
+
+                // Calculate transform values
+                const translateXLeft = -100 + (clampedProgress * 80); // From -100% to -20%
+                const rotateLeft = -30 + (clampedProgress * 30); // From -30deg to 0deg
+
+                const translateXRight = 100 - (clampedProgress * 80); // From 100% to 20%
+                const rotateRight = 30 - (clampedProgress * 30); // From 30deg to 0deg
+
+                // Apply transforms
+                shehnaiLeft.style.transform = `translateX(${translateXLeft}%) translateY(-50%) rotate(${rotateLeft}deg)`;
+                shehnaiRight.style.transform = `translateX(${translateXRight}%) translateY(-50%) rotate(${rotateRight}deg) scaleX(-1)`;
+            }
+
+            // Initial call to set the correct state on page load (shehnais off-screen)
+            // This ensures they are hidden if the welcome-section is not yet in the animation range
+            updateShehnaiAnimation();
+
+            // Listen for scroll events and update animation using requestAnimationFrame for smoothness
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(updateShehnaiAnimation);
+            });
+            
+            // Music Control
             
             // Music Control
             const bgMusic = document.getElementById('background-music');
