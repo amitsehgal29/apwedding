@@ -196,7 +196,7 @@
 
         .shehnai {
             position: absolute;
-            width: 200px; /* Adjust size as needed */
+            width: 200px;
             height: auto;
             transition: transform 0.1s linear;
             will-change: transform;
@@ -212,7 +212,7 @@
         .shehnai.right {
             top: 40%;
             right: 0;
-            transform: scaleX(-1); /* Mirrored */
+            transform: scaleX(-1);
         }
 
                 .divider {
@@ -262,13 +262,16 @@
                     mask-composite: intersect;
                     -webkit-mask-composite: source-in;
                     opacity: 0;
-                    animation: fadeInSVG 1.5s ease-in-out forwards;
+                    transition: opacity 1.5s ease-in-out;
                 }
 
-                @keyframes fadeInSVG {
-                    to {
-                        opacity: 1;
-                    }
+                .top-svg-container.loaded {
+                    opacity: 1;
+                }
+
+                .top-svg-container.instant {
+                    opacity: 1;
+                    transition: none;
                 }
 
         
@@ -1838,6 +1841,27 @@
 
         // Observe all animated elements
         document.addEventListener('DOMContentLoaded', () => {
+            // Smart loading for top.svg - show instantly if cached, fade if loading
+            const topSvgContainer = document.querySelector('.top-svg-container');
+            if (topSvgContainer) {
+                const img = new Image();
+                img.src = 'top.svg';
+                
+                if (img.complete) {
+                    // Image is already cached, show instantly
+                    topSvgContainer.classList.add('instant');
+                } else {
+                    // Image needs to load, show with fade effect
+                    img.onload = () => {
+                        topSvgContainer.classList.add('loaded');
+                    };
+                    img.onerror = () => {
+                        // Even on error, show the container (background-image might still work)
+                        topSvgContainer.classList.add('loaded');
+                    };
+                }
+            }
+            
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
             animatedElements.forEach(el => observer.observe(el));
             
