@@ -443,6 +443,10 @@
             width: 180px;
             height: auto;
             flex-shrink: 0;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3))
+                    drop-shadow(0 0 20px rgba(255, 223, 100, 0.3))
+                    drop-shadow(0 0 40px rgba(255, 223, 100, 0.2));
+            animation: chandelier-glow 4s ease-in-out infinite alternate;
         }
 
         @keyframes chandelier-glow {
@@ -1634,10 +1638,10 @@
             <!-- Chandelier decorations -->
             <div class="chandelier-container">
                 <div class="chandelier left">
-                    <img src="chand.svg" alt="Chandelier">
+                    <img src="chand.png" alt="Chandelier">
                 </div>
                 <div class="chandelier right">
-                    <img src="chand.svg" alt="Chandelier">
+                    <img src="chand.png" alt="Chandelier">
                 </div>
             </div>
             
