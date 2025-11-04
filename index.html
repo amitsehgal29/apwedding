@@ -200,15 +200,17 @@
             height: auto;
             transition: transform 0.1s linear;
             will-change: transform;
+            opacity: 0;
+            animation: fadeInSVG 1.5s ease-in-out forwards;
         }
 
         .shehnai.left {
-            top: 35%;
+            top: 40%;
             left: 0;
         }
 
         .shehnai.right {
-            top: 35%;
+            top: 40%;
             right: 0;
             transform: scaleX(-1); /* Mirrored */
         }
@@ -247,25 +249,33 @@
                 .top-svg-container {
                     position: absolute;
                     top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
+                    left: 0;
                     width: 100vw;
                     height: 100%;
                     background-image: url(top.svg);
-                    background-size: 100% 100%;
+                    background-size: cover;
+                    background-position: center center;
                     background-repeat: no-repeat;
                     z-index: 0;
                     pointer-events: none;
                     mask-image: linear-gradient(to top, transparent, black 20%, black 90%, transparent);
                     mask-composite: intersect;
                     -webkit-mask-composite: source-in;
+                    opacity: 0;
+                    animation: fadeInSVG 1.5s ease-in-out forwards;
+                }
+
+                @keyframes fadeInSVG {
+                    to {
+                        opacity: 1;
+                    }
                 }
 
         
 
                 .ganesh-mantra {
 
-                    font-size: clamp(1.5rem, 4vw, 2rem);
+                    font-size: clamp(1rem, 4vw, 1.5rem);
 
                     font-family: 'Cormorant Garamond', serif;
 
@@ -286,9 +296,9 @@
 
                 .ganesh-icon {
 
-                    width: 9.375rem;
+                    width: 7.375rem;
 
-                    height: 9.375rem;
+                    height: 7.375rem;
 
                     margin: 0 auto;
 
@@ -375,6 +385,106 @@
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
             font-weight: 500;
+        }
+
+        /* Chandelier decorations */
+        .chandelier-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: visible;
+        }
+
+        .chandelier {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-origin: top center;
+            opacity: 0.75;
+        }
+
+        /* String with fade at top */
+        .chandelier::before {
+            content: '';
+            width: 2.5px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.04) 3%, 
+                rgba(212, 175, 55, 0.12) 10%, 
+                rgba(212, 175, 55, 0.2) 20%, 
+                rgba(212, 175, 55, 0.28) 100%);
+            display: block;
+        }
+
+        .chandelier img {
+            display: block;
+            width: 250px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3))
+                    drop-shadow(0 0 20px rgba(255, 223, 100, 0.3))
+                    drop-shadow(0 0 40px rgba(255, 223, 100, 0.2));
+            animation: chandelier-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes chandelier-glow {
+            0% {
+                filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3))
+                        drop-shadow(0 0 20px rgba(255, 223, 100, 0.25))
+                        drop-shadow(0 0 40px rgba(255, 223, 100, 0.15));
+            }
+            100% {
+                filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3))
+                        drop-shadow(0 0 20px rgba(255, 223, 100, 0.35))
+                        drop-shadow(0 0 40px rgba(255, 223, 100, 0.25));
+            }
+        }
+
+        /* Left chandelier - shorter */
+        .chandelier.left {
+            left: 15px;
+            top: 0;
+            animation: chandelier-sway-left 8s ease-in-out infinite;
+        }
+
+        .chandelier.left::before {
+            height: 480px;
+        }
+
+        /* Right chandelier - longer */
+        .chandelier.right {
+            right: 15px;
+            left: auto;
+            top: 0;
+            animation: chandelier-sway-right 10s ease-in-out infinite;
+        }
+
+        .chandelier.right::before {
+            height: 480px;
+        }
+
+        /* Subtle pendulum animations */
+        @keyframes chandelier-sway-left {
+            0%, 100% {
+                transform: rotate(-2deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+
+        @keyframes chandelier-sway-right {
+            0%, 100% {
+                transform: rotate(2deg);
+            }
+            50% {
+                transform: rotate(-2deg);
+            }
         }
 
         /* Events Section */
@@ -527,6 +637,11 @@
             margin-top: 0;
         }
 
+        /* Reduce padding for form card to give more space to inputs */
+        .link-card:has(.message-form) {
+            padding: 1.875rem 0.25rem 3.125rem 0.25rem !important;
+        }
+
         .btn {
             display: inline-block;
             padding: 0.9375rem 2.5rem;
@@ -585,7 +700,7 @@
         /* Message Form */
         .message-form {
             background: transparent;
-            padding: 1.875rem;
+            padding: 1.875rem 0rem !important;
             border-radius: 0.9375rem;
             box-shadow: none;
             text-align: center;
@@ -613,7 +728,11 @@
 
         .form-group input,
         .form-group textarea {
-            width: 100%;
+            width: 90% !important;
+            max-width: 800px !important;
+            min-width: 300px !important;
+            display: block !important;
+            margin: 0 auto !important;
             padding: 0.9375rem;
             border: 1px solid var(--light-gold);
             border-radius: 0.625rem;
@@ -622,6 +741,7 @@
             transition: border-color 0.3s ease;
             background: white;
             text-align: center;
+            box-sizing: border-box !important;
         }
 
         .form-group input:focus,
@@ -815,6 +935,18 @@
                 padding: 2.5rem 1.875rem;
             }
 
+            .chandelier img {
+                width: 140px;
+            }
+
+            .chandelier.left::before {
+                height: 340px;
+            }
+
+            .chandelier.right::before {
+                height: 340px;
+            }
+
             .events-container {
                 grid-template-columns: 1fr;
             }
@@ -828,7 +960,7 @@
 
             /* Wider form inputs on mobile */
             .message-form {
-                padding: 1.25rem 0.625rem;
+                padding: 1.25rem 0.3rem;
             }
 
             .form-group input,
@@ -1178,47 +1310,35 @@
 
         .rope {
             position: absolute;
-            top: 0;
-            left: 10%;
-            width: 80%;
-            height: 100px;
+            top: 20px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: linear-gradient(to right, 
+                transparent 0%, 
+                #C97B8E 5%, 
+                #C97B8E 95%, 
+                transparent 100%);
             pointer-events: none;
-        }
-
-        .rope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M 0,10 Q 50,90 100,10' fill='none' stroke='%23C97B8E' stroke-width='1'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            filter: drop-shadow(0 2px 3px rgba(200, 100, 130, 0.3));
+            box-shadow: 0 1px 2px rgba(200, 100, 130, 0.3);
         }
 
         .polaroid {
             position: absolute;
-            transform-origin: top center;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
             animation-direction: alternate;
+            left: 0;
+            transform: translateX(-50%);
         }
 
-        .polaroid img {
-            display: block;
-            border: 1.5px solid var(--gold);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Simple small clip */
+        /* Clip holding the photo */
         .polaroid::before {
             content: '';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
             width: 20px;
             height: 16px;
             background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
@@ -1230,25 +1350,31 @@
                 0% 50%, 0% 20%
             );
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2px;
             z-index: 10;
         }
 
-        /* Small clip spring */
+        /* String hanging from rope to clip */
         .polaroid::after {
             content: '';
+            width: 1.5px;
+            height: 20px;
+            background: linear-gradient(to bottom, #C97B8E, rgba(201, 123, 142, 0.7));
             position: absolute;
-            top: -8px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 12px;
-            height: 4px;
-            background: linear-gradient(to bottom, #C0C0C0, #808080);
-            border-radius: 1px;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
-            z-index: 11;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
         }
 
-        /* Sway animations */
+        .polaroid img {
+            display: block;
+            border: 1.5px solid var(--gold);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transform-origin: top center;
+        }
+
+        /* Sway animations - now rotates the image inside */
         @keyframes sway1 {
             0% { transform: rotate(-4deg); }
             100% { transform: rotate(2deg); }
@@ -1270,43 +1396,39 @@
         }
 
         .polaroid:nth-child(2) {
-            left: 12%;
-            top: 27px;
-            animation: sway1 3.5s ease-in-out infinite alternate;
+            left: 15%;
         }
 
         .polaroid:nth-child(2) img {
             width: 130px;
+            animation: sway1 3.5s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(3) {
-            left: 35%;
-            top: 46px;
-            animation: sway2 4s ease-in-out infinite alternate;
+            left: 38%;
         }
 
         .polaroid:nth-child(3) img {
             width: 130px;
+            animation: sway2 4s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(4) {
-            left: 58%;
-            top: 49px;
-            animation: sway3 3.8s ease-in-out infinite alternate;
+            left: 62%;
         }
 
         .polaroid:nth-child(4) img {
             width: 130px;
+            animation: sway3 3.8s ease-in-out infinite alternate;
         }
 
         .polaroid:nth-child(5) {
-            left: 81%;
-            top: 35px;
-            animation: sway4 4.2s ease-in-out infinite alternate;
+            left: 85%;
         }
 
         .polaroid:nth-child(5) img {
             width: 130px;
+            animation: sway4 4.2s ease-in-out infinite alternate;
         }
 
         @media (max-width: 768px) {
@@ -1317,24 +1439,8 @@
                 width: 5.625rem;
             }
 
-            .polaroid:nth-child(2) {
-                left: 12%;
-                top: 1.125rem;
-            }
-
-            .polaroid:nth-child(3) {
-                left: 35%;
-                top: 3.4375rem;
-            }
-
-            .polaroid:nth-child(4) {
-                left: 58%;
-                top: 3.5625rem;
-            }
-
-            .polaroid:nth-child(5) {
-                left: 81%;
-                top: 1.25rem;
+            .polaroid::before {
+                height: 15px;
             }
 
             .polaroid-container {
@@ -1343,11 +1449,7 @@
             }
 
             .rope {
-                height: 5rem;
-            }
-
-            .rope::before {
-                height: 5rem;
+                top: 15px;
             }
         }
         /* Route Animation for Venue Location */
@@ -1496,8 +1598,9 @@
 
     <!-- Ganesh Section -->
     <section class="ganesh-section">
-        <div class="top-svg-container"></div>
         <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
+        <div class="top-svg-container"></div>
+        
     </section>
 
     <!-- Welcome Section -->
@@ -1506,6 +1609,7 @@
             <img src="shehnai.svg" class="shehnai left" alt="Shehnai">
             <img src="shehnai.svg" class="shehnai right" alt="Shehnai">
         </div>
+        <div class="ganesh-mantra fade-in">|| श्री गणेशाय नमः ||</div>
         <div class="ganesh-icon scale-in">
             <img src="ganpati.png" alt="Shree Ganesh" loading="eager">
         </div>
@@ -1524,6 +1628,16 @@
     <!-- Formal Invitation Section -->
     <section class="invitation-section">
         <div class="invitation-content fade-in arch-shaped">
+            <!-- Chandelier decorations -->
+            <div class="chandelier-container">
+                <div class="chandelier left">
+                    <img src="chand.svg" alt="Chandelier">
+                </div>
+                <div class="chandelier right">
+                    <img src="chand.svg" alt="Chandelier">
+                </div>
+            </div>
+            
             <h2 class="invitation-title">You Are Cordially Invited</h2>
             <div class="divider"></div>
             <p class="invitation-text">
@@ -1597,7 +1711,7 @@
                 </div>
                 <div class="event-details">
                     <strong>Time</strong>
-                    11:00 PM Onwards
+                    11:00 AM Onwards
                 </div>
                 <div class="event-details">
                     <strong>Venue</strong>
@@ -1694,7 +1808,7 @@
                     </div>
                 </div>
                 
-                <h3>📸 Share Your Photos</h3>
+                <h3>📸 Share Photos</h3>
                 <p>Capture moments and share them with us! Upload your photos from the celebration</p>
                 <a href="https://photos.app.goo.gl/iGJowXZonFgK34eH6" target="_blank" class="btn">Upload Photos</a>
             </div>
@@ -1825,18 +1939,18 @@
             // Music Control
             const bgMusic = document.getElementById('background-music');
             const musicToggle = document.getElementById('music-toggle');
-            let musicPlaying = true; // Start as playing
+            let musicPlaying = false;
+            let musicStarted = false;
             
             // Function to play music
             function playMusic() {
                 bgMusic.play().then(() => {
                     musicPlaying = true;
+                    musicStarted = true;
                     musicToggle.classList.add('playing');
                     musicToggle.classList.remove('muted');
                     musicToggle.title = 'Pause Music';
                 }).catch(error => {
-                    console.log('Could not play audio:', error);
-                    // If auto-play fails, update state
                     musicPlaying = false;
                     musicToggle.classList.remove('playing');
                     musicToggle.classList.add('muted');
@@ -1854,7 +1968,8 @@
             }
             
             // Toggle music on button click
-            musicToggle.addEventListener('click', () => {
+            musicToggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent double-triggering
                 if (musicPlaying) {
                     pauseMusic();
                 } else {
@@ -1862,17 +1977,31 @@
                 }
             });
             
-            // Try auto-play on page load
-            playMusic(); // Attempt to play immediately
-            
-            // Also try to play on first user interaction anywhere if auto-play was blocked
-            let interactionAttempted = false;
-            document.body.addEventListener('click', () => {
-                if (!musicPlaying && !interactionAttempted) {
+            // Start music on ANY click (first interaction)
+            document.addEventListener('click', function startOnClick() {
+                if (!musicStarted) {
                     playMusic();
-                    interactionAttempted = true;
                 }
             }, { once: true });
+            
+            // Also try on any key press
+            document.addEventListener('keydown', function startOnKey() {
+                if (!musicStarted) {
+                    playMusic();
+                }
+            }, { once: true });
+            
+            // Also try on touchstart for mobile
+            document.addEventListener('touchstart', function startOnTouch() {
+                if (!musicStarted) {
+                    playMusic();
+                }
+            }, { once: true, passive: true });
+            
+            // Set initial state
+            musicToggle.classList.remove('playing');
+            musicToggle.classList.add('muted');
+            musicToggle.title = 'Play Music';
             
             // Handle Ganpati image loading animation
             const ganpatiImg = document.querySelector('.ganesh-icon img');
